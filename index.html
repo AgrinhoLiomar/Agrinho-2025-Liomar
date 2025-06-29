@@ -153,7 +153,6 @@
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
         }
         .time-unit {
             display: flex;
@@ -182,51 +181,6 @@
         }
         .final-message { display: none; }
         
-        /* Estilos para Funcionalidades da IA */
-        .ia-button {
-            background-color: #fde047;
-            color: #14532d;
-            border: none;
-            border-radius: 50px;
-            padding: 0.7rem 1.5rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-         .ia-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-         .ia-button:disabled {
-            background-color: #9ca3af;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .ia-result-container {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 1rem;
-            margin-top: 1rem;
-            min-height: 50px;
-            text-align: center;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            font-style: italic;
-        }
-        .loader {
-            border: 4px solid rgba(255,255,255,0.2);
-            border-left-color: #fde047;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 10px auto;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
     </style>
 </head>
 <body class="bg-green-50 text-gray-800">
@@ -303,10 +257,6 @@
                              <div id="mensagem-final" class="final-message">
                                  <h2>A Grande Festa <span>começou!</span></h2>
                              </div>
-                             <div class="ia-features">
-                                 <button id="generate-message-btn" class="ia-button">✨ Mensagem do Dia</button>
-                             </div>
-                             <div id="ia-result" class="ia-result-container">Clique para uma mensagem inspiradora sobre o nosso tema.</div>
                         </div>
 
                      </div>
@@ -601,7 +551,7 @@
             const initialLink = document.querySelector('.nav-link[data-target="inicio"]');
             initialLink.classList.add('bg-green-100', 'text-green-800', 'font-semibold');
             
-            // --- INÍCIO DA LÓGICA DO CONTADOR E DA IA ---
+            // --- INÍCIO DA LÓGICA DO CONTADOR ---
             
             // --- LÓGICA DO CRONÔMETRO ---
             const dataEvento = new Date("Jul 11, 2025 13:30:00").getTime();
@@ -621,10 +571,6 @@
                     clearInterval(intervalo);
                     if(countdownEl) countdownEl.style.display = 'none';
                     if(mensagemFinalEl) mensagemFinalEl.style.display = 'block';
-                    const iaFeatures = document.querySelector('.ia-features');
-                    const iaResult = document.getElementById('ia-result');
-                    if (iaFeatures) iaFeatures.style.display = 'none';
-                    if (iaResult) iaResult.style.display = 'none';
                     return;
                 }
                 const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
@@ -641,57 +587,8 @@
             
             const intervalo = setInterval(atualizarCronometro, 1000);
             atualizarCronometro();
-
-            // --- LÓGICA DA API GEMINI ---
-            const messageBtn = document.getElementById('generate-message-btn');
-            const resultContainer = document.getElementById('ia-result');
-            const apiKey = ""; // Deixe em branco
-
-            const toggleButton = (disabled) => {
-                if (messageBtn) messageBtn.disabled = disabled;
-            };
             
-            const callGemini = async (prompt) => {
-                if (!resultContainer) return;
-                resultContainer.innerHTML = '<div class="loader"></div>';
-                toggleButton(true);
-                
-                try {
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                    const payload = {
-                        contents: [{ role: "user", parts: [{ text: prompt }] }]
-                    };
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-
-                    const result = await response.json();
-                    
-                    if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        resultContainer.innerText = text;
-                    } else {
-                        throw new Error("Resposta da API inválida.");
-                    }
-                } catch (error) {
-                    console.error("Erro ao chamar a API Gemini:", error);
-                    resultContainer.innerText = "Desculpe, não foi possível gerar o conteúdo no momento.";
-                } finally {
-                    toggleButton(false);
-                }
-            };
-            
-            if (messageBtn) {
-                messageBtn.addEventListener('click', () => {
-                    const prompt = "Crie uma 'Mensagem do Dia' inspiradora e curta (2-3 frases) com o tema 'Agrinho'. A mensagem deve ser positiva e relacionar conceitos como natureza, agricultura, tecnologia no campo, sustentabilidade e comunidade. Deve ser uma mensagem que traga uma reflexão para o dia a dia.";
-                    callGemini(prompt);
-                });
-            }
-             // --- FIM DA LÓGICA DO CONTADOR E DA IA ---
+            // --- FIM DA LÓGICA DO CONTADOR ---
 
             // --- LÓGICA DOS JOGOS (Omitida para brevidade) ---
         });
