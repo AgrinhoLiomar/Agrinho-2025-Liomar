@@ -51,8 +51,8 @@
             max-height: 500px;
         }
         
-        /* Estilos para Modal dos Jogos */
-        .game-modal {
+        /* Estilos para Modais */
+        .modal {
             display: none;
             position: fixed;
             z-index: 100;
@@ -61,72 +61,78 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.7);
             align-items: center;
             justify-content: center;
             padding: 1rem;
         }
-        .game-modal-content {
-            background-color: #fefefe;
+        .modal-content {
+            background-color: #f4f4f5; /* Fundo do modal mais suave */
             margin: auto;
             padding: 1.5rem;
             border-radius: 0.75rem;
             width: 100%;
-            max-width: 480px;
+            max-width: 520px;
             max-height: 95vh;
             display: flex;
             flex-direction: column;
             position: relative;
             animation: slideIn 0.4s ease-out;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
         .close-modal-btn {
             position: absolute;
             top: 0.75rem;
             right: 0.75rem;
-            color: #aaa;
+            color: #a1a1aa;
             cursor: pointer;
+            transition: color 0.2s;
         }
-        .close-modal-btn:hover { color: #333; }
+        .close-modal-btn:hover { color: #18181b; }
 
         @keyframes slideIn {
             from { transform: translateY(-30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
         
-        #memory-game-area {
-            overflow-y: auto;
-            padding-right: 5px;
+        /* Estilos Melhorados para Jogos */
+        .game-button {
+            background-color: #22c55e;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+        .game-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .level-selection-screen, .game-area, .result-screen {
+            display: none;
+        }
+        .level-selection-screen.active, .game-area.active, .result-screen.active {
+            display: block;
         }
 
-        /* Estilos para o Jogo da Memória */
-        .memory-card {
-            background-color: #4ade80;
-            aspect-ratio: 1 / 1;
+        .level-button {
+            background-color: #fff;
+            color: #16a34a;
+            border: 2px solid #16a34a;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(1rem, 8vw, 2rem);
-            user-select: none;
-        }
-        .memory-card.flipped, .memory-card.matched {
-            transform: rotateY(180deg);
-            background-color: #dcfce7;
-        }
-        .card-face {
-            position: absolute;
+            transition: all 0.2s ease;
             width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .card-back { transform: rotateY(180deg); }
-        
+        .level-button:hover {
+            background-color: #16a34a;
+            color: #fff;
+        }
+
         /* Estilos para o Contador Regressivo */
         .countdown-container {
             font-family: 'Poppins', sans-serif;
@@ -276,7 +282,6 @@
                                 </div>
                                 <p class="mt-4 text-gray-700 leading-relaxed">O "Projeto Abelha" visa introduzir os alunos do primeiro ano ao fascinante mundo das abelhas e sua importância para o meio ambiente. Através de atividades lúdicas e educativas, os alunos aprenderão sobre a vida das abelhas, a produção de mel e a polinização.</p>
                                 <p class="mt-4 text-gray-700 leading-relaxed"><strong class="font-semibold text-gray-800">Objetivos:</strong> Desenvolver a curiosidade sobre os insetos, promover a conscientização sobre a importância das abelhas e estimular a observação da natureza.</p>
-                                <a href="#" class="inline-block mt-4 font-semibold text-green-600 hover:text-green-800 transition-colors">Saiba mais sobre o projeto &rarr;</a>
                             </div>
                             <img src="https://placehold.co/700x400/dcfce7/166534?text=Foto+da+Turma+do+1º+Ano" alt="Foto da turma do 1º ano" class="w-full h-auto object-cover rounded-lg shadow-md mt-6">
                         </div>
@@ -292,7 +297,6 @@
                                 </div>
                                 <p class="mt-4 text-gray-700 leading-relaxed">O projeto "Guardiões das Sementes" tem como objetivo ensinar os alunos sobre a importância das sementes, o ciclo de vida das plantas e a agricultura sustentável. Os alunos participarão do plantio, cuidado e colheita de uma pequena horta na escola.</p>
                                 <p class="mt-4 text-gray-700 leading-relaxed"><strong class="font-semibold text-gray-800">Objetivos:</strong> Conscientizar sobre a origem dos alimentos, promover o contato com a natureza, desenvolver o senso de responsabilidade e trabalho em equipe.</p>
-                                <a href="#" class="inline-block mt-4 font-semibold text-green-600 hover:text-green-800 transition-colors">Saiba mais sobre o projeto &rarr;</a>
                             </div>
                             <img src="https://placehold.co/700x400/bbf7d0/166534?text=Foto+da+Turma+do+2º+Ano" alt="Foto da turma do 2º ano" class="w-full h-auto object-cover rounded-lg shadow-md mt-6">
                         </div>
@@ -308,7 +312,6 @@
                                 </div>
                                 <p class="mt-4 text-gray-700 leading-relaxed">O projeto "Horta e Curiosidades" convida os alunos do terceiro ano a explorar o mundo da jardinagem, aprendendo sobre o cultivo de alimentos e descobrindo fatos interessantes sobre as plantas e o solo. Eles participarão ativamente da criação e manutenção de uma horta escolar.</p>
                                 <p class="mt-4 text-gray-700 leading-relaxed"><strong class="font-semibold text-gray-800">Objetivos:</strong> Incentivar uma alimentação saudável, ensinar sobre o ciclo de vida das plantas, desenvolver habilidades de trabalho em equipe e paciência, e despertar a curiosidade científica sobre a natureza.</p>
-                                <a href="#" class="inline-block mt-4 font-semibold text-green-600 hover:text-green-800 transition-colors">Saiba mais sobre o projeto &rarr;</a>
                             </div>
                             <img src="https://placehold.co/700x400/86efac/166534?text=Foto+da+Turma+do+3º+Ano" alt="Foto da turma do 3º ano" class="w-full h-auto object-cover rounded-lg shadow-md mt-6">
                         </div>
@@ -328,7 +331,6 @@
                                 <p class="mt-4 text-gray-700 leading-relaxed">
                                     <strong class="font-semibold text-gray-800">Objetivos:</strong> Desmistificar a imagem do campo como um lugar "atrasado", entender o papel da tecnologia na produção de alimentos e despertar o interesse por carreiras inovadoras.
                                 </p>
-                                <a href="#" class="inline-block mt-4 font-semibold text-green-600 hover:text-green-800 transition-colors">Saiba mais sobre o projeto &rarr;</a>
                             </div>
                             <img src="https://placehold.co/700x400/4ade80/166534?text=Foto+da+Turma+do+4º+Ano" alt="Foto da turma do 4º ano" class="w-full h-auto object-cover rounded-lg shadow-md mt-6">
                         </div>
@@ -336,7 +338,7 @@
                     <!-- 5º ANO -->
                      <section id="turma-5" class="content-section">
                         <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
-                            <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-6">5º Ano</h2>
+                             <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-6">5º Ano</h2>
                              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
                                 <div class="flex items-start sm:items-center gap-4">
                                     <i data-feather="globe" class="w-8 h-8 text-green-600 flex-shrink-0"></i>
@@ -348,7 +350,6 @@
                                 <p class="mt-4 text-gray-700 leading-relaxed">
                                     <strong class="font-semibold text-gray-800">Objetivos:</strong> Compreender a relação entre matéria-prima e produto industrializado, analisar dados económicos básicos e valorizar a importância da economia rural para a comunidade.
                                 </p>
-                                <a href="#" class="inline-block mt-4 font-semibold text-green-600 hover:text-green-800 transition-colors">Saiba mais sobre o projeto &rarr;</a>
                             </div>
                             <img src="https://placehold.co/700x400/22c55e/166534?text=Foto+da+Turma+do+5º+Ano" alt="Foto da turma do 5º ano" class="w-full h-auto object-cover rounded-lg shadow-md mt-6">
                         </div>
@@ -360,9 +361,13 @@
                         <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Registos das Nossas Visitas</h2>
                         <p class="text-gray-600 mb-8 leading-relaxed">Aqui poderá visualizar os registos fotográficos e em vídeo das visitas e atividades externas que realizamos ao longo do projeto. Estes momentos foram fundamentais para conectar os estudantes com a realidade do campo e da cidade, enriquecendo a nossa experiência pedagógica.</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/a7f3d0/14532d?text=Visita+à+Fazenda" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Fazenda"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Visita à Fazenda Modelo</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/86efac/166534?text=Feira+do+Produtor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Feira do Produtor"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Conversa na Feira do Produtor</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/4ade80/166534?text=Horta+Comunitária" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Horta Comunitária"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Plantio na Horta Comunitária</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/f59e0b/ffffff?text=Meliponario" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Chácara São Luiz"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Chácara São Luiz Meliponário</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/a7f3d0/14532d?text=Piquenique" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Piquenique no Parque Manduhi"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Parque Manduhi (Piquenique)</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/a7f3d0/14532d?text=W.A+Maquinas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à W.A Maquinas"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">W.A Maquinas John Deere</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/22c55e/ffffff?text=Horta" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Horta"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Horta</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/86efac/166534?text=Copagril" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Copagril"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Copagril</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/4f46e5/ffffff?text=SEAB" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à SEAB"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">SEAB</p></div></div>
+                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/4ade80/166534?text=Amafil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Amafil"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Amafil</p></div></div>
                         </div>
                     </div>
                 </section>
@@ -376,13 +381,31 @@
                                 <div class="bg-white p-4 rounded-full mb-4"><i data-feather="box" class="w-12 h-12 text-green-600"></i></div>
                                 <h3 class="text-xl font-semibold text-green-800 mb-2">Quiz: Campo ou Cidade?</h3>
                                 <p class="text-gray-600 mb-4">Teste os seus conhecimentos sobre os produtos e profissões de cada ambiente.</p>
-                                <button id="start-quiz-btn" class="mt-auto bg-green-600 text-white font-bold py-2 px-6 rounded-full hover:bg-green-700 transition-colors">Jogar Agora</button>
+                                <button id="start-quiz-btn" class="mt-auto game-button">Jogar Agora</button>
                             </div>
                             <div class="bg-green-100 p-6 rounded-lg flex flex-col items-center text-center shadow-md hover:shadow-xl transition-shadow">
                                <div class="bg-white p-4 rounded-full mb-4"><i data-feather="copy" class="w-12 h-12 text-green-600"></i></div>
                                 <h3 class="text-xl font-semibold text-green-800 mb-2">Jogo da Memória</h3>
                                 <p class="text-gray-600 mb-4">Encontre os pares de cartas que representam a conexão campo-cidade.</p>
-                                <button id="start-memory-btn" class="mt-auto bg-green-600 text-white font-bold py-2 px-6 rounded-full hover:bg-green-700 transition-colors">Jogar Agora</button>
+                                <button id="start-memory-btn" class="mt-auto game-button">Jogar Agora</button>
+                            </div>
+                             <div class="bg-green-100 p-6 rounded-lg flex flex-col items-center text-center shadow-md hover:shadow-xl transition-shadow">
+                                <div class="bg-white p-4 rounded-full mb-4"><i data-feather="target" class="w-12 h-12 text-green-600"></i></div>
+                                <h3 class="text-xl font-semibold text-green-800 mb-2">Acerte o Alimento</h3>
+                                <p class="text-gray-600 mb-4">Associe o produto da cidade ao seu ingrediente do campo.</p>
+                                <button id="start-food-guess-btn" class="mt-auto game-button">Jogar Agora</button>
+                            </div>
+                             <div class="bg-green-100 p-6 rounded-lg flex flex-col items-center text-center shadow-md hover:shadow-xl transition-shadow">
+                                <div class="bg-white p-4 rounded-full mb-4"><i data-feather="move" class="w-12 h-12 text-green-600"></i></div>
+                                <h3 class="text-xl font-semibold text-green-800 mb-2">Organize a Fazenda</h3>
+                                <p class="text-gray-600 mb-4">Arraste cada item para a sua área correta: campo ou cidade.</p>
+                                <button id="start-drag-drop-btn" class="mt-auto game-button">Jogar Agora</button>
+                            </div>
+                            <div class="bg-green-100 p-6 rounded-lg flex flex-col items-center text-center shadow-md hover:shadow-xl transition-shadow">
+                               <div class="bg-white p-4 rounded-full mb-4"><i data-feather="search" class="w-12 h-12 text-green-600"></i></div>
+                                <h3 class="text-xl font-semibold text-green-800 mb-2">Encontre o Intruso</h3>
+                                <p class="text-gray-600 mb-4">Clique no item que não pertence ao grupo.</p>
+                                <button id="start-intruder-btn" class="mt-auto game-button">Jogar Agora</button>
                             </div>
                         </div>
                     </div>
@@ -391,44 +414,50 @@
                 <section id="timeline" class="content-section">
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
                         <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Linha do Tempo do Projeto</h2>
-                        <p class="text-gray-600 mb-8 leading-relaxed">Acompanhe a trajetória do nosso projeto! A linha do tempo apresenta a sequência das principais etapas e atividades desenvolvidas entre 01 de maio e 11 de julho de 2025.</p>
+                        <p class="text-gray-600 mb-8 leading-relaxed">Acompanhe a trajetória do nosso projeto! A linha do tempo apresenta a sequência das principais etapas e atividades desenvolvidas.</p>
                         <div class="relative">
                             <!-- Linha vertical -->
                             <div class="absolute left-5 top-2 bottom-0 w-0.5 bg-green-200"></div>
-                            <!-- Item da timeline -->
                             <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
-                                <p class="font-bold text-green-600">01 de Maio de 2025</p>
-                                <h4 class="font-semibold text-lg text-gray-800">Início do Projeto</h4>
-                                <p class="text-gray-600">Início oficial do projeto e apresentação do tema para as turmas.</p>
+                                <p class="font-bold text-green-600">09 de Abril de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Visita à Chácara São Luiz (Meliponário)</h4>
                             </div>
-                            <!-- Item da timeline -->
-                            <div class="relative mb-8 pl-12">
+                             <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
-                                <p class="font-bold text-green-600">Maio de 2025</p>
-                                <h4 class="font-semibold text-lg text-gray-800">Pesquisas Iniciais</h4>
-                                <p class="text-gray-600">Rodas de conversa e pesquisas iniciais sobre a conexão entre o campo e a cidade.</p>
+                                <p class="font-bold text-green-600">15 de Abril de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Piquenique no Parque Manduhi</h4>
                             </div>
-                             <!-- Item da timeline -->
-                            <div class="relative mb-8 pl-12">
+                             <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
-                                <p class="font-bold text-green-600">Junho de 2025</p>
-                                <h4 class="font-semibold text-lg text-gray-800">Atividades Práticas</h4>
-                                <p class="text-gray-600">Realização de visitas de campo e atividades práticas. Desenvolvimento dos trabalhos, maquetes e desenhos pelos alunos.</p>
+                                <p class="font-bold text-green-600">29 de Maio de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Visita à W.A Maquinas John Deere</h4>
                             </div>
-                             <!-- Item da timeline -->
-                            <div class="relative mb-8 pl-12">
+                             <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
-                                <p class="font-bold text-green-600">Julho de 2025</p>
-                                <h4 class="font-semibold text-lg text-gray-800">Exposição Escolar</h4>
-                                <p class="text-gray-600">Organização de uma exposição na escola para apresentar os resultados do projeto à comunidade escolar.</p>
+                                <p class="font-bold text-green-600">12 de Junho de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Atividade na Horta</h4>
                             </div>
-                             <!-- Item da timeline -->
-                            <div class="relative mb-8 pl-12">
+                             <div class="relative mb-8 pl-12">
+                                <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
+                                <p class="font-bold text-green-600">13 de Junho de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Visita à Copagril</h4>
+                            </div>
+                             <div class="relative mb-8 pl-12">
+                                <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
+                                <p class="font-bold text-green-600">25 de Junho de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Visita à SEAB</h4>
+                            </div>
+                             <div class="relative mb-8 pl-12">
+                                <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
+                                <p class="font-bold text-green-600">04 de Julho de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Visita à Amafil</h4>
+                            </div>
+                             <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
                                 <p class="font-bold text-green-600">11 de Julho de 2025</p>
                                 <h4 class="font-semibold text-lg text-gray-800">Início da Grande Festa</h4>
-                                <p class="text-gray-600">Início da grande festa e confraternização entre os participantes.</p>
+                                <p class="text-gray-600">Encerramento do projeto e confraternização.</p>
                             </div>
                         </div>
                     </div>
@@ -437,12 +466,36 @@
         </main>
     </div>
 
-    <!-- Modal do Jogo Quiz -->
-    <div id="quiz-modal" class="game-modal">
-        <div class="game-modal-content">
-            <i id="close-quiz-modal" data-feather="x" class="close-modal-btn w-6 h-6"></i>
+    <!-- Modal Detalhes da Semente -->
+    <div id="seed-detail-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
+            <img id="seed-modal-img" src="" alt="Semente" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h3 id="seed-modal-name" class="text-2xl font-bold text-gray-800 mb-2"></h3>
+            <p id="seed-modal-sci-name" class="text-sm text-gray-500 italic mb-4"></p>
+            <div class="text-left space-y-2">
+                <p><strong class="font-semibold text-gray-700">Tempo de Germinação:</strong> <span id="seed-modal-germination"></span></p>
+                <p><strong class="font-semibold text-gray-700">Época de Plantio:</strong> <span id="seed-modal-planting"></span></p>
+            </div>
+            <div class="gemini-feature-container">
+                <button id="generate-planting-tips-btn" class="game-button gemini-button w-full">🌱 Gerar Dicas de Plantio</button>
+                <div id="planting-tips-result" class="gemini-result-container hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modais dos Jogos -->
+    <div id="quiz-modal" class="modal game-modal">
+        <div class="modal-content game-modal-content">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
             <h3 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 text-center">Quiz: Campo ou Cidade?</h3>
-            <div id="quiz-game-area" class="flex-grow overflow-y-auto">
+            <div class="level-selection-screen active text-center space-y-4">
+                <h4 class="font-semibold text-lg">Escolha um nível:</h4>
+                <button class="level-button" data-level="1">Nível 1</button>
+                <button class="level-button" data-level="2">Nível 2</button>
+                <button class="level-button" data-level="3">Nível 3</button>
+            </div>
+            <div class="game-area">
                 <div id="quiz-question-container" class="text-center">
                     <img id="quiz-image" src="" alt="Imagem do quiz" class="w-full h-48 sm:h-64 object-contain rounded-lg mb-4 bg-gray-100">
                     <p id="quiz-feedback" class="h-6 mb-2 font-semibold"></p>
@@ -451,31 +504,114 @@
                         <button id="quiz-btn-cidade" class="w-full sm:w-auto bg-blue-500 text-white font-bold py-3 sm:py-2 px-8 rounded-full hover:bg-blue-600 transition-colors">Cidade</button>
                     </div>
                 </div>
-                <div id="quiz-result-container" class="hidden text-center">
-                    <h4 class="text-xl font-bold mb-2">Fim de Jogo!</h4>
-                    <p id="quiz-final-score" class="text-lg mb-4"></p>
-                    <button id="quiz-restart-btn" class="bg-green-600 text-white font-bold py-2 px-6 rounded-full hover:bg-green-700 transition-colors">Jogar Novamente</button>
-                </div>
             </div>
-             <div class="mt-4 text-center text-sm sm:text-base text-gray-600 flex-shrink-0">
-                <span id="quiz-score">Pontuação: 0</span> | <span id="quiz-question-number">Pergunta: 1 / 5</span>
+            <div class="result-screen text-center">
+                <h4 class="text-xl font-bold mb-2">Fim de Jogo!</h4>
+                <p id="quiz-final-score" class="text-lg mb-4"></p>
+                <button class="game-button restart-button">Jogar Novamente</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal do Jogo da Memória -->
-    <div id="memory-modal" class="game-modal">
-        <div class="game-modal-content">
-            <i id="close-memory-modal" data-feather="x" class="close-modal-btn w-6 h-6"></i>
+    <div id="memory-modal" class="modal game-modal">
+        <div class="modal-content game-modal-content">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
             <h3 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 text-center flex-shrink-0">Jogo da Memória</h3>
-            <div id="memory-game-area" class="flex-grow">
+            <div class="level-selection-screen active text-center space-y-4">
+                <h4 class="font-semibold text-lg">Escolha um nível:</h4>
+                <button class="level-button" data-level="1">Nível 1 (8 cartas)</button>
+                <button class="level-button" data-level="2">Nível 2 (12 cartas)</button>
+                <button class="level-button" data-level="3">Nível 3 (16 cartas)</button>
+            </div>
+            <div class="game-area">
                 <div id="memory-grid" class="grid grid-cols-4 gap-2 sm:gap-3"></div>
                 <div id="memory-win-message" class="hidden text-center mt-4">
                     <h4 class="text-xl sm:text-2xl font-bold text-green-600">Parabéns, conseguiu!</h4>
                 </div>
             </div>
-            <div class="mt-4 text-center flex-shrink-0">
-                 <button id="memory-restart-btn" class="bg-green-600 text-white font-bold py-2 px-6 rounded-full hover:bg-green-700 transition-colors">Reiniciar Jogo</button>
+            <div class="result-screen text-center">
+                 <button class="game-button restart-button">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="food-guess-modal" class="modal game-modal">
+        <div class="modal-content game-modal-content">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
+            <h3 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 text-center">Acerte o Alimento!</h3>
+             <div class="level-selection-screen active text-center space-y-4">
+                <h4 class="font-semibold text-lg">Escolha um nível:</h4>
+                <button class="level-button" data-level="1">Nível 1</button>
+                <button class="level-button" data-level="2">Nível 2</button>
+                <button class="level-button" data-level="3">Nível 3</button>
+            </div>
+            <div class="game-area text-center">
+                <p class="mb-2 text-gray-600">De onde vem este produto?</p>
+                <div id="food-guess-question-container">
+                    <div class="flex justify-center items-center h-32 mb-4">
+                        <span id="food-guess-product" class="text-5xl"></span>
+                    </div>
+                    <p id="food-guess-feedback" class="h-6 mb-2 font-semibold"></p>
+                    <div id="food-guess-options" class="grid grid-cols-2 gap-4"></div>
+                </div>
+            </div>
+             <div class="result-screen text-center">
+                <h4 class="text-xl font-bold mb-2">Fim de Jogo!</h4>
+                <p id="food-guess-final-score" class="text-lg mb-4"></p>
+                <button class="game-button restart-button">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="drag-drop-modal" class="modal game-modal">
+        <div class="modal-content game-modal-content" style="max-width: 600px;">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
+            <h3 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 text-center">Organize a Fazenda</h3>
+            <div class="level-selection-screen active text-center space-y-4">
+                <h4 class="font-semibold text-lg">Escolha um nível:</h4>
+                <button class="level-button" data-level="1">Nível 1</button>
+                <button class="level-button" data-level="2">Nível 2</button>
+                <button class="level-button" data-level="3">Nível 3</button>
+            </div>
+            <div class="game-area">
+                <div id="items-to-drag" class="flex flex-wrap justify-center gap-4 p-4 bg-gray-100 rounded-lg mb-4"></div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div id="campo-zone" class="drop-zone flex flex-col items-center gap-2" data-zone="campo">
+                        <h4 class="font-bold text-lg text-green-700">CAMPO</h4>
+                    </div>
+                    <div id="cidade-zone" class="drop-zone flex flex-col items-center gap-2" data-zone="cidade">
+                        <h4 class="font-bold text-lg text-blue-700">CIDADE</h4>
+                    </div>
+                </div>
+                 <div id="drag-drop-win-message" class="hidden text-center mt-4">
+                    <h4 class="text-2xl font-bold text-green-600">Muito bem! Tudo organizado!</h4>
+                </div>
+            </div>
+            <div class="result-screen text-center">
+                 <button class="game-button restart-button">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="intruder-modal" class="modal game-modal">
+        <div class="modal-content game-modal-content">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
+            <h3 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 text-center">Encontre o Intruso</h3>
+            <div class="level-selection-screen active text-center space-y-4">
+                <h4 class="font-semibold text-lg">Escolha um nível:</h4>
+                <button class="level-button" data-level="1">Nível 1</button>
+                <button class="level-button" data-level="2">Nível 2</button>
+                <button class="level-button" data-level="3">Nível 3</button>
+            </div>
+            <div class="game-area text-center">
+                 <p id="intruder-instruction" class="mb-4 text-gray-600"></p>
+                 <div id="intruder-grid" class="grid grid-cols-3 gap-4"></div>
+                 <p id="intruder-feedback" class="h-6 mt-4 font-semibold"></p>
+            </div>
+            <div class="result-screen text-center">
+                <h4 class="text-xl font-bold mb-2">Fim de Jogo!</h4>
+                <p id="intruder-final-score" class="text-lg mb-4"></p>
+                <button class="game-button restart-button">Jogar Novamente</button>
             </div>
         </div>
     </div>
@@ -483,7 +619,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Lógica de navegação principal (igual à anterior)
+            // Lógica de navegação principal
             const navLinks = document.querySelectorAll('.nav-link');
             const contentSections = document.querySelectorAll('.content-section');
             const turmasToggle = document.getElementById('turmas-toggle');
@@ -522,13 +658,8 @@
                     const targetId = link.getAttribute('data-target');
                     if(targetId) {
                         switchContent(targetId);
-                        updateActiveLink(link);
-                        if(link.closest('.submenu')) {
-                            turmasSubmenu.classList.add('open');
-                            const icon = turmasToggle.querySelector('.feather-chevron-down');
-                            if (icon) icon.style.transform = 'rotate(180deg)';
-                        }
                     }
+                    updateActiveLink(link);
                 });
             });
 
@@ -549,12 +680,7 @@
             });
             sidebarOverlay.addEventListener('click', closeMobileMenu);
             
-            const initialLink = document.querySelector('.nav-link[data-target="inicio"]');
-            initialLink.classList.add('bg-green-100', 'text-green-800', 'font-semibold');
-            
-            // --- INÍCIO DA LÓGICA DO CONTADOR ---
-            
-            // --- LÓGICA DO CRONÔMETRO ---
+            // --- LÓGICA DO CONTADOR ---
             const dataEvento = new Date("Jul 11, 2025 13:30:00").getTime();
             const diasEl = document.getElementById('dias');
             const horasEl = document.getElementById('horas');
@@ -579,7 +705,6 @@
                 const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
                 const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
                 
-                // Verifica se os elementos existem antes de atualizar
                 if(diasEl) diasEl.innerHTML = formatarTempo(dias);
                 if(horasEl) horasEl.innerHTML = formatarTempo(horas);
                 if(minutosEl) minutosEl.innerHTML = formatarTempo(minutos);
@@ -588,10 +713,516 @@
             
             const intervalo = setInterval(atualizarCronometro, 1000);
             atualizarCronometro();
-            
-            // --- FIM DA LÓGICA DO CONTADOR ---
 
-            // --- LÓGICA DOS JOGOS (Omitida para brevidade) ---
+            // --- LÓGICA GERAL DOS JOGOS E MODAIS ---
+            const shuffle = (array) => array.sort(() => Math.random() - 0.5);
+
+            document.body.addEventListener('click', function(event) {
+                // Fecha qualquer modal
+                const closeButton = event.target.closest('.close-modal-btn');
+                if (closeButton) {
+                     const modal = closeButton.closest('.modal');
+                     if(modal) {
+                        modal.style.display = 'none';
+                     }
+                }
+                
+                // Reinicia o jogo e volta para a seleção de nível
+                const restartButton = event.target.closest('.restart-button');
+                if(restartButton) {
+                    const modal = restartButton.closest('.modal');
+                    if(modal) {
+                        modal.querySelector('.level-selection-screen').classList.add('active');
+                        modal.querySelector('.game-area').classList.remove('active');
+                        modal.querySelector('.result-screen').classList.remove('active');
+                    }
+                }
+            });
+
+            function setupGame(modalId, startBtnId, gameStartFunction) {
+                const modal = document.getElementById(modalId);
+                const startBtn = document.getElementById(startBtnId);
+                if(startBtn) {
+                    startBtn.addEventListener('click', () => {
+                        modal.style.display = 'flex';
+                        modal.querySelector('.level-selection-screen').classList.add('active');
+                        modal.querySelector('.game-area').classList.remove('active');
+                        modal.querySelector('.result-screen').classList.remove('active');
+                        feather.replace();
+                    });
+
+                    modal.querySelectorAll('.level-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const level = parseInt(button.dataset.level);
+                            modal.querySelector('.level-selection-screen').classList.remove('active');
+                            modal.querySelector('.game-area').classList.add('active');
+                            gameStartFunction(level);
+                        });
+                    });
+                }
+            }
+            
+            // --- JOGO 1: QUIZ ---
+            const quizModal = document.getElementById('quiz-modal');
+            const campoBtn = document.getElementById('quiz-btn-campo');
+            const cidadeBtn = document.getElementById('quiz-btn-cidade');
+            const quizImageEl = document.getElementById('quiz-image');
+            const feedbackEl = document.getElementById('quiz-feedback');
+            const quizResultContainer = quizModal.querySelector('.result-screen');
+            const quizQuestionContainer = quizModal.querySelector('.game-area');
+            const quizFinalScoreEl = document.getElementById('quiz-final-score');
+            
+            const allQuestions = [
+                { image: 'https://placehold.co/600x400/facc15/333?text=Trator', answer: 'campo' },
+                { image: 'https://placehold.co/600x400/38bdf8/fff?text=Prédios', answer: 'cidade' },
+                { image: 'https://placehold.co/600x400/84cc16/333?text=Plantação', answer: 'campo' },
+                { image: 'https://placehold.co/600x400/94a3b8/fff?text=Metrô', answer: 'cidade' },
+                { image: 'https://placehold.co/600x400/fbbf24/333?text=Galinha', answer: 'campo' },
+                { image: 'https://placehold.co/600x400/4f46e5/fff?text=Escritório', answer: 'cidade' },
+                { image: 'https://placehold.co/600x400/16a34a/fff?text=Milho', answer: 'campo' },
+                { image: 'https://placehold.co/600x400/be123c/fff?text=Fábrica', answer: 'cidade' }
+            ];
+            let quizQuestions = [];
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            function startQuizGame(level) {
+                const questionCount = level === 1 ? 4 : level === 2 ? 6 : 8;
+                quizQuestions = shuffle([...allQuestions]).slice(0, questionCount);
+                currentQuestionIndex = 0;
+                score = 0;
+                showQuestion();
+            }
+
+            function showQuestion() {
+                if (currentQuestionIndex >= quizQuestions.length) {
+                    showResults();
+                    return;
+                }
+                feedbackEl.textContent = '';
+                quizImageEl.src = quizQuestions[currentQuestionIndex].image;
+                campoBtn.disabled = false;
+                cidadeBtn.disabled = false;
+            }
+
+            function checkAnswer(userAnswer) {
+                campoBtn.disabled = true;
+                cidadeBtn.disabled = true;
+                const correctAnswer = quizQuestions[currentQuestionIndex].answer;
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    feedbackEl.textContent = 'Correto!';
+                    feedbackEl.className = 'h-6 mb-2 font-semibold text-green-600';
+                } else {
+                    feedbackEl.textContent = 'Errado!';
+                    feedbackEl.className = 'h-6 mb-2 font-semibold text-red-600';
+                }
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    showQuestion();
+                }, 1500);
+            }
+
+            function showResults() {
+                quizQuestionContainer.classList.remove('active');
+                quizResultContainer.classList.add('active');
+                quizFinalScoreEl.textContent = `Sua pontuação final foi: ${score} de ${quizQuestions.length}!`;
+            }
+            
+            if(campoBtn) campoBtn.addEventListener('click', () => checkAnswer('campo'));
+            if(cidadeBtn) cidadeBtn.addEventListener('click', () => checkAnswer('cidade'));
+            setupGame('quiz-modal', 'start-quiz-btn', startQuizGame);
+
+            // --- JOGO 2: JOGO DA MEMÓRIA ---
+            const memoryGrid = document.getElementById('memory-grid');
+            const memoryWinMessage = document.getElementById('memory-win-message');
+            const memoryResultScreen = document.getElementById('memory-modal').querySelector('.result-screen');
+            const allCardContent = ['🌽', '🏙️', '🐄', '🚗', '🚜', '🏢', '🌱', '🏭', '🍓', '🚦', '🐖', '🏪'];
+            let cards = [];
+            let flippedCards = [];
+            let matchedPairs = 0;
+            let lockBoard = false;
+
+            function startMemoryGame(level) {
+                const pairCount = level === 1 ? 4 : level === 2 ? 6 : 8;
+                const selectedIcons = shuffle([...allCardContent]).slice(0, pairCount);
+                cards = shuffle([...selectedIcons, ...selectedIcons]);
+                createMemoryBoard();
+            }
+
+            function createMemoryBoard() {
+                memoryGrid.innerHTML = '';
+                memoryWinMessage.classList.add('hidden');
+                memoryResultScreen.classList.remove('active');
+                memoryGrid.parentElement.classList.add('active');
+                
+                const columns = cards.length > 12 ? 4 : 4;
+                memoryGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+
+                matchedPairs = 0;
+                lockBoard = false;
+                cards.forEach(content => {
+                    const card = document.createElement('div');
+                    card.classList.add('memory-card');
+                    card.dataset.content = content;
+                    card.innerHTML = `<div class="card-face card-front"><i data-feather="star" class="w-8 h-8"></i></div><div class="card-face card-back">${content}</div>`;
+                    card.addEventListener('click', flipCard);
+                    memoryGrid.appendChild(card);
+                });
+                feather.replace();
+            }
+
+            function flipCard() {
+                if (lockBoard || this.classList.contains('matched') || this === flippedCards[0]) return;
+                this.classList.add('flipped');
+                flippedCards.push(this);
+                if (flippedCards.length === 2) checkForMatch();
+            }
+
+            function checkForMatch() {
+                lockBoard = true;
+                const [card1, card2] = flippedCards;
+                if (card1.dataset.content === card2.dataset.content) disableCards();
+                else unflipCards();
+            }
+            
+            function disableCards() {
+                flippedCards.forEach(card => card.classList.add('matched'));
+                matchedPairs++;
+                resetBoard();
+                if (matchedPairs === cards.length / 2) {
+                    setTimeout(() => { 
+                        memoryWinMessage.classList.remove('hidden');
+                        memoryGrid.parentElement.classList.remove('active');
+                        memoryResultScreen.classList.add('active');
+                    }, 800);
+                }
+            }
+
+            function unflipCards() {
+                setTimeout(() => {
+                    flippedCards.forEach(card => card.classList.remove('flipped'));
+                    resetBoard();
+                }, 1000);
+            }
+            
+            function resetBoard() {
+                [flippedCards, lockBoard] = [[], false];
+            }
+            setupGame('memory-modal', 'start-memory-btn', startMemoryGame);
+
+            // --- JOGO 3: ACERTE O ALIMENTO ---
+            const foodGuessProductEl = document.getElementById('food-guess-product');
+            const foodGuessOptionsEl = document.getElementById('food-guess-options');
+            const foodGuessFeedbackEl = document.getElementById('food-guess-feedback');
+            const foodGuessResultContainer = document.getElementById('food-guess-modal').querySelector('.result-screen');
+            const foodGuessQuestionContainer = document.getElementById('food-guess-question-container').parentElement;
+            const foodGuessFinalScoreEl = document.getElementById('food-guess-final-score');
+
+            const allFoodQuestions = [
+                { product: '🧃', answer: '🍊', options: ['🍓', '🐄', '🐔'] },
+                { product: '🍟', answer: '🥔', options: ['🌽', '🍅', '🌾'] },
+                { product: '🍞', answer: '🌾', options: ['🐄', '🐔', '🐖'] },
+                { product: '🍿', answer: '🌽', options: ['🥔', '🍅', '🍓'] },
+                { product: '🍳', answer: '🐔', options: ['🐄', '🐖', '🌾'] },
+                { product: '🧀', answer: '🐄', options: ['🐔', '🌽', '🍊'] }
+            ];
+            let foodQuestions = [];
+            let currentFoodQuestionIndex = 0;
+            let foodScore = 0;
+
+            function startFoodGuessGame(level) {
+                const questionCount = level === 1 ? 3 : level === 2 ? 4 : 6;
+                foodQuestions = shuffle([...allFoodQuestions]).slice(0, questionCount);
+                currentFoodQuestionIndex = 0;
+                foodScore = 0;
+                showFoodQuestion();
+            }
+
+            function showFoodQuestion() {
+                if (currentFoodQuestionIndex >= foodQuestions.length) {
+                    foodGuessQuestionContainer.classList.remove('active');
+                    foodGuessResultContainer.classList.add('active');
+                    foodGuessFinalScoreEl.textContent = `Sua pontuação final: ${foodScore} de ${foodQuestions.length}!`;
+                    return;
+                }
+                foodGuessFeedbackEl.textContent = '';
+                const question = foodQuestions[currentFoodQuestionIndex];
+                foodGuessProductEl.textContent = question.product;
+                foodGuessOptionsEl.innerHTML = '';
+                const options = shuffle([...question.options, question.answer]);
+                options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.className = 'food-option-btn';
+                    button.onclick = () => checkFoodAnswer(option);
+                    foodGuessOptionsEl.appendChild(button);
+                });
+            }
+
+            function checkFoodAnswer(selectedOption) {
+                const question = foodQuestions[currentFoodQuestionIndex];
+                if (selectedOption === question.answer) {
+                    foodScore++;
+                    foodGuessFeedbackEl.textContent = 'Correto!';
+                    foodGuessFeedbackEl.className = 'h-6 mb-2 font-semibold text-green-600';
+                } else {
+                    foodGuessFeedbackEl.textContent = 'Errado!';
+                    foodGuessFeedbackEl.className = 'h-6 mb-2 font-semibold text-red-600';
+                }
+                
+                Array.from(foodGuessOptionsEl.children).forEach(btn => btn.disabled = true);
+
+                setTimeout(() => {
+                    currentFoodQuestionIndex++;
+                    showFoodQuestion();
+                }, 1500);
+            }
+            setupGame('food-guess-modal', 'start-food-guess-btn', startFoodGuessGame);
+
+            // --- JOGO 4: ORGANIZE A FAZENDA ---
+            const itemsToDragEl = document.getElementById('items-to-drag');
+            const dropZones = document.querySelectorAll('.drop-zone');
+            const dragDropWinMessage = document.getElementById('drag-drop-win-message');
+            const dragDropResultScreen = document.getElementById('drag-drop-modal').querySelector('.result-screen');
+            
+            const allDragItems = [
+                { id: 'item-1', content: '🚜', zone: 'campo' }, { id: 'item-2', content: '🏢', zone: 'cidade' },
+                { id: 'item-3', content: '🐄', zone: 'campo' }, { id: 'item-4', content: '🚗', zone: 'cidade' },
+                { id: 'item-5', content: '🌽', zone: 'campo' }, { id: 'item-6', content: '💻', zone: 'cidade' },
+                { id: 'item-7', content: '🐑', zone: 'campo' }, { id: 'item-8', content: '🏦', zone: 'cidade' }
+            ];
+            let dragItems = [];
+
+            function startDragDropGame(level) {
+                const itemCount = level === 1 ? 4 : level === 2 ? 6 : 8;
+                dragItems = shuffle([...allDragItems]).slice(0, itemCount);
+
+                dragDropWinMessage.classList.add('hidden');
+                dragDropResultScreen.classList.remove('active');
+                itemsToDragEl.innerHTML = '';
+                dropZones.forEach(zone => {
+                    while(zone.children.length > 1) zone.removeChild(zone.lastChild);
+                });
+
+                dragItems.forEach(item => {
+                    const el = document.createElement('span');
+                    el.id = item.id;
+                    el.textContent = item.content;
+                    el.className = 'draggable-item text-4xl';
+                    el.draggable = true;
+                    el.dataset.zone = item.zone;
+                    itemsToDragEl.appendChild(el);
+                });
+            }
+
+            document.addEventListener('dragstart', e => {
+                if (e.target.classList.contains('draggable-item')) {
+                    e.dataTransfer.setData('text/plain', e.target.id);
+                }
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+                zone.addEventListener('dragleave', e => { zone.classList.remove('over'); });
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('over');
+                    const id = e.dataTransfer.getData('text/plain');
+                    const draggable = document.getElementById(id);
+                    if (draggable && draggable.dataset.zone === zone.dataset.zone) {
+                        draggable.remove();
+                        const clone = draggable.cloneNode(true);
+                        clone.classList.remove('draggable-item');
+                        clone.style.cursor = 'default';
+                        zone.appendChild(clone);
+                        if (itemsToDragEl.children.length === 0) {
+                            dragDropWinMessage.classList.remove('hidden');
+                            dragDropResultScreen.classList.add('active');
+                        }
+                    }
+                });
+            });
+            setupGame('drag-drop-modal', 'start-drag-drop-btn', startDragDropGame);
+
+            // --- JOGO 5: ENCONTRE O INTRUSO ---
+            const intruderInstructionEl = document.getElementById('intruder-instruction');
+            const intruderGridEl = document.getElementById('intruder-grid');
+            const intruderFeedbackEl = document.getElementById('intruder-feedback');
+            const intruderResultContainer = document.getElementById('intruder-modal').querySelector('.result-screen');
+            const intruderFinalScoreEl = document.getElementById('intruder-final-score');
+            
+            const intruderSets = [
+                { instruction: "Encontre o item da cidade", items: ['🚜', '🐄', '🌽', '🏢', '🐑', '🌾'], intruder: '🏢' },
+                { instruction: "Encontre o item do campo", items: ['🚗', '🚦', '🏦', '💻', '🏪', '🌱'], intruder: '🌱' },
+                { instruction: "Encontre a fruta", items: ['🥕', '🥔', '🥦', '🍊', '🥬', '🍆'], intruder: '🍊' },
+                { instruction: "Encontre o animal", items: ['🍅', '🍓', '🐔', '🍇', '🍉', '🍒'], intruder: '🐔' }
+            ];
+            let currentIntruderRound = 0;
+            let intruderScore = 0;
+            let intruderLevel = 1;
+
+            function startIntruderGame(level) {
+                intruderLevel = level;
+                currentIntruderRound = 0;
+                intruderScore = 0;
+                nextIntruderRound();
+            }
+
+            function nextIntruderRound() {
+                if (currentIntruderRound >= intruderSets.length) {
+                    intruderGridEl.parentElement.classList.remove('active');
+                    intruderResultContainer.classList.add('active');
+                    intruderFinalScoreEl.textContent = `Sua pontuação final: ${intruderScore} de ${intruderSets.length}!`;
+                    return;
+                }
+                intruderFeedbackEl.textContent = '';
+                const set = intruderSets[currentIntruderRound];
+                intruderInstructionEl.textContent = set.instruction;
+                intruderGridEl.innerHTML = '';
+                
+                const gridSize = intruderLevel === 1 ? 6 : intruderLevel === 2 ? 9 : 12;
+                intruderGridEl.style.gridTemplateColumns = `repeat(${gridSize === 9 ? 3 : 4}, 1fr)`;
+
+                const items = shuffle(set.items).slice(0, gridSize - 1);
+                const finalItems = shuffle([...items, set.intruder]);
+
+                finalItems.forEach(item => {
+                    const el = document.createElement('div');
+                    el.textContent = item;
+                    el.className = 'intruder-item';
+                    el.onclick = () => checkIntruder(item, set.intruder);
+                    intruderGridEl.appendChild(el);
+                });
+            }
+
+            function checkIntruder(selected, correct) {
+                if (selected === correct) {
+                    intruderScore++;
+                    intruderFeedbackEl.textContent = 'Correto!';
+                    intruderFeedbackEl.className = 'h-6 mt-4 font-semibold text-green-600';
+                } else {
+                    intruderFeedbackEl.textContent = 'Errado!';
+                    intruderFeedbackEl.className = 'h-6 mt-4 font-semibold text-red-600';
+                }
+                Array.from(intruderGridEl.children).forEach(btn => btn.onclick = null);
+                setTimeout(() => {
+                    currentIntruderRound++;
+                    nextIntruderRound();
+                }, 1500);
+            }
+            setupGame('intruder-modal', 'start-intruder-btn', startIntruderGame);
+
+            // --- LÓGICA DA BIBLIOTECA DE SEMENTES ---
+            const seedDetailModal = document.getElementById('seed-detail-modal');
+            const seedGallery = document.getElementById('seed-gallery');
+            const seeds = [
+                { name: "Milho", sciName: "Zea mays", germination: "4 a 10 dias", planting: "Primavera", img: "https://placehold.co/300x300/f59e0b/422006?text=Milho" },
+                { name: "Feijão", sciName: "Phaseolus vulgaris", germination: "7 a 14 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/78350f/ffffff?text=Feijão" },
+                { name: "Girassol", sciName: "Helianthus annuus", germination: "7 a 10 dias", planting: "Primavera", img: "https://placehold.co/300x300/404040/fbbf24?text=Girassol" },
+                { name: "Abóbora", sciName: "Cucurbita", germination: "6 a 10 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/fca5a5/4c0519?text=Abóbora" },
+                { name: "Tomate", sciName: "Solanum lycopersicum", germination: "5 a 10 dias", planting: "Primavera", img: "https://placehold.co/300x300/ef4444/ffffff?text=Tomate" },
+                { name: "Alface", sciName: "Lactuca sativa", germination: "7 a 10 dias", planting: "Ano todo", img: "https://placehold.co/300x300/84cc16/14532d?text=Alface" },
+                { name: "Cenoura", sciName: "Daucus carota", germination: "14 a 21 dias", planting: "Ano todo", img: "https://placehold.co/300x300/f97316/ffffff?text=Cenoura" },
+                { name: "Rabanete", sciName: "Raphanus sativus", germination: "3 a 7 dias", planting: "Ano todo", img: "https://placehold.co/300x300/ec4899/ffffff?text=Rabanete" },
+                { name: "Pimentão", sciName: "Capsicum annuum", germination: "8 a 14 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/dc2626/ffffff?text=Pimentão" },
+                { name: "Cebola", sciName: "Allium cepa", germination: "7 a 12 dias", planting: "Outono / Inverno", img: "https://placehold.co/300x300/f3e8ff/581c87?text=Cebola" },
+                { name: "Salsa", sciName: "Petroselinum crispum", germination: "14 a 30 dias", planting: "Ano todo", img: "https://placehold.co/300x300/16a34a/ffffff?text=Salsa" },
+                { name: "Coentro", sciName: "Coriandrum sativum", germination: "7 a 20 dias", planting: "Ano todo", img: "https://placehold.co/300x300/15803d/ffffff?text=Coentro" },
+                { name: "Manjericão", sciName: "Ocimum basilicum", germination: "5 a 10 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/4d7c0f/ffffff?text=Manjericão" },
+                { name: "Ervilha", sciName: "Pisum sativum", germination: "7 a 14 dias", planting: "Outono / Inverno", img: "https://placehold.co/300x300/a3e635/166534?text=Ervilha" },
+                { name: "Melancia", sciName: "Citrullus lanatus", germination: "4 a 12 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/f87171/14532d?text=Melancia" },
+                { name: "Pepino", sciName: "Cucumis sativus", germination: "3 a 10 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/22c55e/ffffff?text=Pepino" }
+            ];
+            
+            function populateSeedGallery() {
+                if (!seedGallery) return;
+                seedGallery.innerHTML = ''; // Limpa a galeria para evitar duplicatas
+                seeds.forEach(seed => {
+                    const card = document.createElement('div');
+                    card.className = "seed-card bg-white p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all";
+                    card.dataset.name = seed.name;
+                    card.dataset.sciName = seed.sciName;
+                    card.dataset.germination = seed.germination;
+                    card.dataset.planting = seed.planting;
+                    card.dataset.img = seed.img;
+                    card.innerHTML = `
+                        <img src="${seed.img.replace('300x300', '150x150')}" alt="Semente de ${seed.name}" class="w-full h-24 object-cover rounded-md mx-auto mb-2">
+                        <p class="font-semibold text-gray-700">${seed.name}</p>
+                    `;
+                    seedGallery.appendChild(card);
+                });
+            }
+            populateSeedGallery(); // Popula a galeria quando o script é carregado
+
+            if (seedGallery) {
+                seedGallery.addEventListener('click', (e) => {
+                    const card = e.target.closest('.seed-card');
+                    if (!card) return;
+
+                    document.getElementById('seed-modal-img').src = card.dataset.img;
+                    document.getElementById('seed-modal-name').textContent = card.dataset.name;
+                    document.getElementById('seed-modal-sci-name').textContent = card.dataset.sciName;
+                    document.getElementById('seed-modal-germination').textContent = card.dataset.germination;
+                    document.getElementById('seed-modal-planting').textContent = card.dataset.planting;
+                    
+                    const tipsBtn = document.getElementById('generate-planting-tips-btn');
+                    tipsBtn.dataset.seedName = card.dataset.name;
+                    
+                    document.getElementById('planting-tips-result').classList.add('hidden');
+                    seedDetailModal.style.display = 'flex';
+                    feather.replace();
+                });
+            }
+            
+            // --- LÓGICA DA API GEMINI ---
+            const apiKey = ""; // Deixe em branco
+
+            async function callGemini(prompt, resultContainer, button) {
+                resultContainer.innerHTML = '<div class="loader"></div>';
+                resultContainer.classList.remove('hidden');
+                button.disabled = true;
+                
+                try {
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        resultContainer.innerText = text;
+                    } else {
+                        throw new Error("Resposta da API inválida.");
+                    }
+                } catch (error) {
+                    console.error("Erro ao chamar a API Gemini:", error);
+                    resultContainer.innerText = "Desculpe, não foi possível gerar as ideias no momento. Tente novamente mais tarde.";
+                } finally {
+                    button.disabled = false;
+                }
+            }
+            
+            const genTipsBtn = document.getElementById('generate-planting-tips-btn');
+            if (genTipsBtn) {
+                genTipsBtn.addEventListener('click', (e) => {
+                    const seedName = e.target.dataset.seedName;
+                    const resultContainer = document.getElementById('planting-tips-result');
+                    const prompt = `Aja como um agricultor experiente. Forneça dicas simples e práticas para plantar sementes de ${seedName} numa horta escolar com crianças. Inclua informações sobre: 1. Preparo do solo. 2. Profundidade do plantio. 3. Quantidade de água. 4. Tempo até a colheita. Formate a resposta de forma clara e fácil de ler.`;
+                    callGemini(prompt, resultContainer, e.target);
+                });
+            }
+
+            // Carregamento inicial
+            switchContent('inicio');
         });
     </script>
 </body>
