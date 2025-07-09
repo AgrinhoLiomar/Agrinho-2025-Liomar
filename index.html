@@ -133,6 +133,42 @@
             color: #fff;
         }
 
+        /* Jogo da Memória */
+        .memory-card {
+            aspect-ratio: 1 / 1;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            position: relative;
+        }
+        .memory-card .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .card-front {
+            background: linear-gradient(135deg, #a7f3d0, #4ade80);
+            color: white;
+        }
+        .card-back {
+            background-color: #f0fdf4;
+            transform: rotateY(180deg);
+        }
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+        .memory-card.matched .card-back {
+            border: 4px solid #fde047;
+            box-shadow: 0 0 15px rgba(253, 224, 71, 0.7);
+        }
+
         /* Estilos para o Contador Regressivo */
         .countdown-container {
             font-family: 'Poppins', sans-serif;
@@ -381,16 +417,58 @@
                 <!-- Seção Visitas -->
                 <section id="visitas" class="content-section">
                      <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Registos das Nossas Visitas</h2>
-                        <p class="text-gray-600 mb-8 leading-relaxed">Aqui poderá visualizar os registos fotográficos e em vídeo das visitas e atividades externas que realizamos ao longo do projeto.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/f59e0b/ffffff?text=Meliponario" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Chácara São Luiz"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Chácara São Luiz Meliponário</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/a7f3d0/14532d?text=Piquenique" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Piquenique no Parque Manduhi"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Parque Manduhi (Piquenique)</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/a7f3d0/14532d?text=W.A+Maquinas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à W.A Maquinas"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">W.A Maquinas John Deere</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/22c55e/ffffff?text=Horta" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Horta"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Horta</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/86efac/166534?text=Copagril" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Copagril"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Copagril</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/4f46e5/ffffff?text=SEAB" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à SEAB"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">SEAB</p></div></div>
-                            <div class="group relative overflow-hidden rounded-lg shadow-lg"><img src="https://placehold.co/400x300/4ade80/166534?text=Amafil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Visita à Amafil"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4"><p class="text-white font-semibold">Amafil</p></div></div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Registros das Nossas Visitas</h2>
+                        <p class="text-gray-600 mb-8 leading-relaxed">Aqui poderá visualizar os registros fotográficos e em vídeo das visitas e atividades externas que realizamos ao longo do projeto.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/f59e0b/ffffff?text=Meliponario" class="w-full h-32 object-cover" alt="Visita à Chácara São Luiz">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">Chácara São Luiz</h4>
+                                    <p class="text-sm text-gray-500">09 de Abril de 2025</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/a7f3d0/14532d?text=Piquenique" class="w-full h-32 object-cover" alt="Piquenique no Parque Manduhi">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">Parque Manduhi</h4>
+                                    <p class="text-sm text-gray-500">15 de Abril de 2025</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/a7f3d0/14532d?text=W.A+Maquinas" class="w-full h-32 object-cover" alt="Visita à W.A Maquinas">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">W.A Maquinas</h4>
+                                    <p class="text-sm text-gray-500">29 de Maio de 2025</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/22c55e/ffffff?text=Horta" class="w-full h-32 object-cover" alt="Visita à Horta">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">Horta Comunitária</h4>
+                                    <p class="text-sm text-gray-500">12 de Junho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/86efac/166534?text=Copagril" class="w-full h-32 object-cover" alt="Visita à Copagril">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">Copagril</h4>
+                                    <p class="text-sm text-gray-500">13 de Junho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/4f46e5/ffffff?text=SEAB" class="w-full h-32 object-cover" alt="Visita à SEAB">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">SEAB</h4>
+                                    <p class="text-sm text-gray-500">25 de Junho de 2025</p>
+                                </div>
+                            </div>
+                             <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/4ade80/166534?text=Amafil" class="w-full h-32 object-cover" alt="Visita à Amafil">
+                                <div class="p-4">
+                                    <h4 class="font-bold text-lg">Amafil</h4>
+                                    <p class="text-sm text-gray-500">04 de Julho de 2025</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1011,7 +1089,7 @@
             
             const allDragItems = [
                 { id: 'item-1', content: '🚜', zone: 'campo' }, { id: 'item-2', content: '🏢', zone: 'cidade' },
-                { id: 'item-3', content: '🐄', zone: 'campo' }, { id: 'item-4', content: '🚗', zone: 'cidade' },
+                { id: 'item-3', content: '🐄', zone: 'campo' }, { id: 'item-4', content: '�', zone: 'cidade' },
                 { id: 'item-5', content: '🌽', zone: 'campo' }, { id: 'item-6', content: '💻', zone: 'cidade' },
                 { id: 'item-7', content: '🐑', zone: 'campo' }, { id: 'item-8', content: '🏦', zone: 'cidade' }
             ];
@@ -1250,3 +1328,4 @@
     </script>
 </body>
 </html>
+�
