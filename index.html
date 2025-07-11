@@ -133,42 +133,6 @@
             color: #fff;
         }
 
-        /* Jogo da Memória */
-        .memory-card {
-            aspect-ratio: 1 / 1;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-            position: relative;
-        }
-        .memory-card .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        .card-front {
-            background: linear-gradient(135deg, #a7f3d0, #4ade80);
-            color: white;
-        }
-        .card-back {
-            background-color: #f0fdf4;
-            transform: rotateY(180deg);
-        }
-        .memory-card.flipped {
-            transform: rotateY(180deg);
-        }
-        .memory-card.matched .card-back {
-            border: 4px solid #fde047;
-            box-shadow: 0 0 15px rgba(253, 224, 71, 0.7);
-        }
-
         /* Estilos para o Contador Regressivo */
         .countdown-container {
             font-family: 'Poppins', sans-serif;
@@ -250,6 +214,7 @@
                         </ul>
                     </li>
                     <li><a href="#" class="nav-link flex items-center p-3 rounded-lg text-gray-700 hover:bg-green-100 hover:text-green-800 transition-colors" data-target="biblioteca-sementes"><i data-feather="book-open" class="w-5 h-5 mr-3"></i> Biblioteca de Sementes</a></li>
+                    <li><a href="#" class="nav-link flex items-center p-3 rounded-lg text-gray-700 hover:bg-green-100 hover:text-green-800 transition-colors" data-target="jornal-conectados"><i data-feather="file-text" class="w-5 h-5 mr-3"></i> Jornal Conectados</a></li>
                     <li><a href="#" class="nav-link flex items-center p-3 rounded-lg text-gray-700 hover:bg-green-100 hover:text-green-800 transition-colors" data-target="visitas"><i data-feather="camera" class="w-5 h-5 mr-3"></i> Visitas</a></li>
                     <li><a href="#" class="nav-link flex items-center p-3 rounded-lg text-gray-700 hover:bg-green-100 hover:text-green-800 transition-colors" data-target="jogos"><i data-feather="play-circle" class="w-5 h-5 mr-3"></i> Jogos</a></li>
                     <li><a href="#" class="nav-link flex items-center p-3 rounded-lg text-gray-700 hover:bg-green-100 hover:text-green-800 transition-colors" data-target="timeline"><i data-feather="git-commit" class="w-5 h-5 mr-3"></i> Linha do Tempo</a></li>
@@ -306,7 +271,7 @@
                      </div>
                 </section>
                 
-                <!-- Outras Seções (Turmas, Visitas, etc.) -->
+                <!-- Container das Turmas -->
                 <div id="turmas-container">
                      <!-- 1º ANO -->
                     <section id="turma-1" class="content-section">
@@ -399,6 +364,18 @@
                                 <p class="mt-4 text-gray-700 leading-relaxed">
                                     <strong class="font-semibold text-gray-800">Objetivos:</strong> Compreender a relação entre matéria-prima e produto industrializado, analisar dados económicos básicos e valorizar a importância da economia rural para a comunidade.
                                 </p>
+                             </div>
+                             <!-- Card de Acesso ao Jornal -->
+                             <div class="mt-8 pt-6 border-t border-green-200">
+                                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow cursor-pointer nav-link" data-target="jornal-conectados">
+                                    <div class="flex items-center gap-4">
+                                        <i data-feather="file-text" class="w-10 h-10 text-green-600"></i>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-green-800">Acessar o Jornal Conectados</h3>
+                                            <p class="text-gray-600">Clique aqui para ver as notícias do nosso projeto.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <img src="https://placehold.co/600x300/22c55e/166534?text=Foto+da+Turma+do+5º+Ano" alt="Foto da turma do 5º ano" class="w-full h-auto object-cover rounded-lg shadow-md mt-6 max-h-[300px]">
                         </div>
@@ -414,69 +391,281 @@
                         </div>
                     </div>
                 </section>
-                <!-- Seção Visitas -->
-                <section id="visitas" class="content-section">
-                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Registros das Nossas Visitas</h2>
-                        <p class="text-gray-600 mb-8 leading-relaxed">Aqui poderá visualizar os registros fotográficos e em vídeo das visitas e atividades externas que realizamos ao longo do projeto.</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/f59e0b/ffffff?text=Meliponario" class="w-full h-32 object-cover" alt="Visita à Chácara São Luiz">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">Chácara São Luiz</h4>
-                                    <p class="text-sm text-gray-500">09 de Abril de 2025</p>
-                                </div>
+                <!-- Seção Jornal Conectados -->
+                <section id="jornal-conectados" class="content-section">
+                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                        <div class="text-center mb-8">
+                             <h2 class="text-4xl font-bold text-gray-800" style="font-family: 'Times New Roman', serif;">Jornal Conectados</h2>
+                             <p class="text-gray-500">As últimas notícias da conexão campo-cidade</p>
+                        </div>
+
+                        <div class="border-t-4 border-b-4 border-gray-800 py-2 mb-8">
+                            <h3 id="headline-title" class="text-2xl md:text-3xl font-bold text-center text-gray-900">Alunos descobrem o caminho da mandioca, da fazenda à mesa!</h3>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="md:col-span-2">
+                                <img src="https://placehold.co/800x450/a7f3d0/14532d?text=Reportagem+Principal" alt="Reportagem principal" class="w-full rounded-lg shadow-lg mb-4">
+                                <p class="text-gray-700 leading-relaxed">Nesta edição, acompanhamos a incrível jornada dos alunos do 3º ano para descobrir de onde vêm os alimentos. A visita à cooperativa Copagril revelou os segredos da produção de leite e a importância da tecnologia para garantir a qualidade dos produtos que chegam às nossas casas. Os estudantes viram de perto os tanques de resfriamento, os laboratórios de análise e conversaram com os produtores sobre o dia a dia no campo.</p>
                             </div>
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/a7f3d0/14532d?text=Piquenique" class="w-full h-32 object-cover" alt="Piquenique no Parque Manduhi">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">Parque Manduhi</h4>
-                                    <p class="text-sm text-gray-500">15 de Abril de 2025</p>
+                            <div class="space-y-6">
+                                <div class="bg-gray-100 p-4 rounded-lg">
+                                    <h4 class="font-bold text-lg mb-2">Horta Escolar dá os primeiros frutos</h4>
+                                    <p class="text-sm text-gray-600">O projeto "Guardiões das Sementes" do 2º ano já está a dar resultados! As primeiras folhas de alface e os rabanetes foram colhidos e usados numa deliciosa salada.</p>
                                 </div>
-                            </div>
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/a7f3d0/14532d?text=W.A+Maquinas" class="w-full h-32 object-cover" alt="Visita à W.A Maquinas">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">W.A Maquinas</h4>
-                                    <p class="text-sm text-gray-500">29 de Maio de 2025</p>
-                                </div>
-                            </div>
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/22c55e/ffffff?text=Horta" class="w-full h-32 object-cover" alt="Visita à Horta">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">Horta Comunitária</h4>
-                                    <p class="text-sm text-gray-500">12 de Junho de 2025</p>
-                                </div>
-                            </div>
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/86efac/166534?text=Copagril" class="w-full h-32 object-cover" alt="Visita à Copagril">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">Copagril</h4>
-                                    <p class="text-sm text-gray-500">13 de Junho de 2025</p>
-                                </div>
-                            </div>
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/4f46e5/ffffff?text=SEAB" class="w-full h-32 object-cover" alt="Visita à SEAB">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">SEAB</h4>
-                                    <p class="text-sm text-gray-500">25 de Junho de 2025</p>
-                                </div>
-                            </div>
-                             <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl">
-                                <img src="https://placehold.co/400x250/4ade80/166534?text=Amafil" class="w-full h-32 object-cover" alt="Visita à Amafil">
-                                <div class="p-4">
-                                    <h4 class="font-bold text-lg">Amafil</h4>
-                                    <p class="text-sm text-gray-500">04 de Julho de 2025</p>
+                                <div class="bg-gray-100 p-4 rounded-lg">
+                                    <h4 class="font-bold text-lg mb-2">Tecnologia e abelhas: uma combinação de sucesso</h4>
+                                    <p class="text-sm text-gray-600">Alunos do 1º e 4º anos unem-se para criar um comedouro inteligente para abelhas, combinando o amor pela natureza com a tecnologia.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+                
+                <!-- Container das Visitas -->
+                <div id="visitas-container">
+                    <!-- Seção Principal de Visitas (Galeria) -->
+                    <section id="visitas" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Nossas Visitas</h2>
+                            <p class="text-gray-600 mb-8 leading-relaxed">Aqui poderá visualizar os registros das visitas e atividades externas que realizamos ao longo do projeto. Clique num card para ver mais detalhes.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-chacara">
+                                    <img src="imagens/Visitas/Meliponario/Abelha (18).jpg" alt="Visita à Chácara São Luiz (Meliponário)" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Visita à Chácara São Luiz (Meliponário)</h3>
+                                        <p class="text-sm text-gray-600 mt-1">09 de Abril de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-parque">
+                                    <img src="https://placehold.co/400x250/86efac/14532d?text=Parque+Manduhi" alt="Piquenique no Parque Manduhi" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Piquenique no Parque Manduhi</h3>
+                                        <p class="text-sm text-gray-600 mt-1">15 de Abril de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-john-deere">
+                                    <img src="https://placehold.co/400x250/4ade80/14532d?text=John+Deere" alt="Visita à W.A Maquinas John Deere" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Visita à W.A Maquinas John Deere</h3>
+                                        <p class="text-sm text-gray-600 mt-1">29 de Maio de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-horta">
+                                    <img src="https://placehold.co/400x250/22c55e/14532d?text=Horta+Escolar" alt="Atividade na Horta" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Atividade na Horta</h3>
+                                        <p class="text-sm text-gray-600 mt-1">12 de Junho de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-copagril">
+                                    <img src="https://placehold.co/400x250/16a34a/ffffff?text=Copagril" alt="Visita à Copagril" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Visita à Copagril</h3>
+                                        <p class="text-sm text-gray-600 mt-1">13 de Junho de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-seab">
+                                    <img src="https://placehold.co/400x250/15803d/ffffff?text=SEAB" alt="Visita à SEAB" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Visita à SEAB</h3>
+                                        <p class="text-sm text-gray-600 mt-1">25 de Junho de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-lixeiras">
+                                    <img src="https://placehold.co/400x250/166534/ffffff?text=Lixeiras+Inteligentes" alt="Projeto Lixeiras Inteligentes" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Projeto Lixeiras Inteligentes</h3>
+                                        <p class="text-sm text-gray-600 mt-1">27 de Junho de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-ufpr">
+                                    <img src="https://placehold.co/400x250/065f46/ffffff?text=UFPR+e+Amafil" alt="Visita à UFPR e Amafil" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Visita à UFPR e Amafil</h3>
+                                        <p class="text-sm text-gray-600 mt-1">04 de Julho de 2025</p>
+                                    </div>
+                                </div>
+                                <div class="nav-link bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer" data-target="visita-festa">
+                                    <img src="https://placehold.co/400x250/064e3b/ffffff?text=Grande+Festa" alt="Início da Grande Festa" class="w-full h-40 object-cover pointer-events-none">
+                                    <div class="p-4 pointer-events-none">
+                                        <h3 class="font-bold text-lg text-green-800">Início da Grande Festa</h3>
+                                        <p class="text-sm text-gray-600 mt-1">11 de Julho de 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Páginas de Detalhe de Cada Visita -->
+                    <section id="visita-chacara" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Visita à Chácara São Luiz (Meliponário)</h2>
+                                    <p class="text-gray-500">09 de Abril de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="imagens/Visitas/Meliponario/Abelha (18).jpg" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="imagens/Visitas/Meliponario/Abelha (2).jpg" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="imagens/Visitas/Meliponario/Abelha (9).jpg" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="imagens/Visitas/Meliponario/Abelha (17).jpg" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="imagens/Visitas/Meliponario/Abelha (5).jpg" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-parque" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Piquenique no Parque Manduhi</h2>
+                                    <p class="text-gray-500">15 de Abril de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/86efac/14532d?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/86efac/14532d?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/86efac/14532d?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/86efac/14532d?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/86efac/14532d?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-john-deere" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                             <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Visita à W.A Maquinas John Deere</h2>
+                                    <p class="text-gray-500">29 de Maio de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/4ade80/14532d?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/4ade80/14532d?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/4ade80/14532d?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/4ade80/14532d?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/4ade80/14532d?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-horta" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                             <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Atividade na Horta</h2>
+                                    <p class="text-gray-500">12 de Junho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/22c55e/14532d?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/22c55e/14532d?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/22c55e/14532d?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/22c55e/14532d?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/22c55e/14532d?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-copagril" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Visita à Copagril</h2>
+                                    <p class="text-gray-500">13 de Junho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/16a34a/ffffff?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/16a34a/ffffff?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/16a34a/ffffff?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/16a34a/ffffff?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/16a34a/ffffff?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-seab" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Visita à SEAB</h2>
+                                    <p class="text-gray-500">25 de Junho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/15803d/ffffff?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/15803d/ffffff?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/15803d/ffffff?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/15803d/ffffff?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/15803d/ffffff?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-lixeiras" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Projeto Lixeiras Inteligentes</h2>
+                                    <p class="text-gray-500">27 de Junho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/166534/ffffff?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/166534/ffffff?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/166534/ffffff?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/166534/ffffff?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/166534/ffffff?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-ufpr" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Visita à UFPR e Amafil</h2>
+                                    <p class="text-gray-500">04 de Julho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/065f46/ffffff?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/065f46/ffffff?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/065f46/ffffff?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/065f46/ffffff?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/065f46/ffffff?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                    <section id="visita-festa" class="content-section">
+                        <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+                            <div class="flex items-center mb-6">
+                                <button class="back-to-visitas p-2 mr-4 rounded-full hover:bg-gray-100"><i data-feather="arrow-left"></i></button>
+                                <div>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-green-700">Início da Grande Festa</h2>
+                                    <p class="text-gray-500">11 de Julho de 2025</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                <img src="https://placehold.co/600x400/064e3b/ffffff?text=Foto+1" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/064e3b/ffffff?text=Foto+2" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/064e3b/ffffff?text=Foto+3" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/064e3b/ffffff?text=Foto+4" class="rounded-lg shadow-md w-full h-auto object-cover">
+                                <img src="https://placehold.co/600x400/064e3b/ffffff?text=Foto+5" class="rounded-lg shadow-md w-full h-auto object-cover">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
                 <!-- Seção Jogos -->
                 <section id="jogos" class="content-section">
                      <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
                         <h2 class="text-2xl sm:text-3xl font-bold text-green-700 mb-4">Jogos Educativos</h2>
-                        <p class="text-gray-600 mb-8 leading-relaxed">Aprender também é divertido! Nesta seção, disponibilizamos jogos educativos relacionados ao tema "Festejando a conexão campo-cidade".</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="bg-green-100 p-6 rounded-lg flex flex-col items-center text-center shadow-md hover:shadow-xl transition-shadow">
                                 <div class="bg-white p-4 rounded-full mb-4"><i data-feather="box" class="w-12 h-12 text-green-600"></i></div>
@@ -507,6 +696,12 @@
                                 <h3 class="text-xl font-semibold text-green-800 mb-2">Encontre o Intruso</h3>
                                 <p class="text-gray-600 mb-4">Clique no item que não pertence ao grupo.</p>
                                 <button id="start-intruder-btn" class="mt-auto game-button">Jogar Agora</button>
+                            </div>
+                             <div class="bg-green-100 p-6 rounded-lg flex flex-col items-center text-center shadow-md hover:shadow-xl transition-shadow">
+                                <div class="bg-white p-4 rounded-full mb-4"><i data-feather="edit-3" class="w-12 h-12 text-green-600"></i></div>
+                                <h3 class="text-xl font-semibold text-green-800 mb-2">Caça-Palavras</h3>
+                                <p class="text-gray-600 mb-4">Encontre as palavras relacionadas ao projeto na grelha.</p>
+                                <button id="start-word-search-btn" class="mt-auto game-button">Jogar Agora</button>
                             </div>
                         </div>
                     </div>
@@ -549,10 +744,15 @@
                                 <p class="font-bold text-green-600">25 de Junho de 2025</p>
                                 <h4 class="font-semibold text-lg text-gray-800">Visita à SEAB</h4>
                             </div>
+                            <div class="relative mb-8 pl-12">
+                                <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
+                                <p class="font-bold text-green-600">27 de Junho de 2025</p>
+                                <h4 class="font-semibold text-lg text-gray-800">Projeto Lixeiras Inteligentes</h4>
+                            </div>
                              <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
                                 <p class="font-bold text-green-600">04 de Julho de 2025</p>
-                                <h4 class="font-semibold text-lg text-gray-800">Visita à Amafil</h4>
+                                <h4 class="font-semibold text-lg text-gray-800">Visita à UFPR e Amafil</h4>
                             </div>
                              <div class="relative mb-8 pl-12">
                                 <div class="absolute left-5 top-2 -ml-2.5 w-5 h-5 bg-green-500 rounded-full border-4 border-white"></div>
@@ -717,6 +917,33 @@
         </div>
     </div>
 
+    <div id="word-search-modal" class="modal game-modal">
+        <div class="modal-content game-modal-content" style="max-width: 600px;">
+            <i data-feather="x" class="close-modal-btn w-6 h-6"></i>
+            <h3 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 text-center">Caça-Palavras</h3>
+            <div class="level-selection-screen active text-center space-y-4">
+                <h4 class="font-semibold text-lg">Escolha um nível:</h4>
+                <button class="level-button" data-level="1">Nível 1</button>
+                <button class="level-button" data-level="2">Nível 2</button>
+                <button class="level-button" data-level="3">Nível 3</button>
+            </div>
+            <div class="game-area">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div id="word-search-grid" class="flex-1"></div>
+                    <div class="w-full md:w-1/3">
+                        <h4 class="font-bold text-lg mb-2">Palavras:</h4>
+                        <ul id="word-list" class="space-y-1"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="result-screen text-center">
+                <h4 class="text-xl font-bold mb-2">Parabéns!</h4>
+                <p class="text-lg mb-4">Você encontrou todas as palavras!</p>
+                <button class="game-button restart-button">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -744,7 +971,7 @@
             }
 
             const updateActiveLink = (activeLink) => {
-                 document.querySelectorAll('#main-nav a').forEach(link => {
+                 document.querySelectorAll('#main-nav a, .nav-link').forEach(link => {
                     link.classList.remove('active-link', 'bg-green-100', 'text-green-800', 'font-semibold');
                  });
                  activeLink.classList.add('active-link', 'bg-green-100', 'text-green-800', 'font-semibold');
@@ -760,7 +987,10 @@
                     if(targetId) {
                         switchContent(targetId);
                     }
-                    updateActiveLink(link);
+                    // Apenas atualiza o link ativo se for um link do menu principal
+                    if(link.closest('#main-nav')) {
+                        updateActiveLink(link);
+                    }
                 });
             });
 
@@ -769,10 +999,6 @@
                 turmasSubmenu.classList.toggle('open');
                 const icon = turmasToggle.querySelector('.feather-chevron-down');
                 if (icon) icon.style.transform = turmasSubmenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-                if(!document.querySelector('#turmas-submenu .active-link')) {
-                    switchContent('turmas');
-                    updateActiveLink(turmasToggle);
-                }
             });
             
             menuToggle.addEventListener('click', () => {
@@ -780,6 +1006,16 @@
                 sidebarOverlay.classList.toggle('hidden');
             });
             sidebarOverlay.addEventListener('click', closeMobileMenu);
+
+            // Botão de voltar para a galeria de visitas
+            document.body.addEventListener('click', function(event) {
+                const backButton = event.target.closest('.back-to-visitas');
+                if(backButton) {
+                    event.preventDefault();
+                    switchContent('visitas');
+                    updateActiveLink(document.querySelector('a[data-target="visitas"]'));
+                }
+            });
             
             // --- LÓGICA DO CONTADOR ---
             const dataEvento = new Date("Jul 11, 2025 13:30:00").getTime();
@@ -819,16 +1055,12 @@
             const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
             document.body.addEventListener('click', function(event) {
-                // Fecha qualquer modal
                 const closeButton = event.target.closest('.close-modal-btn');
                 if (closeButton) {
                      const modal = closeButton.closest('.modal');
-                     if(modal) {
-                        modal.style.display = 'none';
-                     }
+                     if(modal) modal.style.display = 'none';
                 }
                 
-                // Reinicia o jogo e volta para a seleção de nível
                 const restartButton = event.target.closest('.restart-button');
                 if(restartButton) {
                     const modal = restartButton.closest('.modal');
@@ -843,7 +1075,7 @@
             function setupGame(modalId, startBtnId, gameStartFunction) {
                 const modal = document.getElementById(modalId);
                 const startBtn = document.getElementById(startBtnId);
-                if(startBtn) {
+                if(startBtn && modal) {
                     startBtn.addEventListener('click', () => {
                         modal.style.display = 'flex';
                         modal.querySelector('.level-selection-screen').classList.add('active');
@@ -865,354 +1097,158 @@
             
             // --- JOGO 1: QUIZ ---
             const quizModal = document.getElementById('quiz-modal');
-            const campoBtn = document.getElementById('quiz-btn-campo');
-            const cidadeBtn = document.getElementById('quiz-btn-cidade');
-            const quizImageEl = document.getElementById('quiz-image');
-            const feedbackEl = document.getElementById('quiz-feedback');
-            const quizResultContainer = quizModal.querySelector('.result-screen');
-            const quizQuestionContainer = quizModal.querySelector('.game-area');
-            const quizFinalScoreEl = document.getElementById('quiz-final-score');
-            
-            const allQuestions = [
-                { image: 'https://placehold.co/600x400/facc15/333?text=Trator', answer: 'campo' },
-                { image: 'https://placehold.co/600x400/38bdf8/fff?text=Prédios', answer: 'cidade' },
-                { image: 'https://placehold.co/600x400/84cc16/333?text=Plantação', answer: 'campo' },
-                { image: 'https://placehold.co/600x400/94a3b8/fff?text=Metrô', answer: 'cidade' },
-                { image: 'https://placehold.co/600x400/fbbf24/333?text=Galinha', answer: 'campo' },
-                { image: 'https://placehold.co/600x400/4f46e5/fff?text=Escritório', answer: 'cidade' },
-                { image: 'https://placehold.co/600x400/16a34a/fff?text=Milho', answer: 'campo' },
-                { image: 'https://placehold.co/600x400/be123c/fff?text=Fábrica', answer: 'cidade' }
-            ];
-            let quizQuestions = [];
-            let currentQuestionIndex = 0;
-            let score = 0;
+            if (quizModal) {
+                const campoBtn = document.getElementById('quiz-btn-campo');
+                const cidadeBtn = document.getElementById('quiz-btn-cidade');
+                const quizImageEl = document.getElementById('quiz-image');
+                const feedbackEl = document.getElementById('quiz-feedback');
+                const quizResultContainer = quizModal.querySelector('.result-screen');
+                const quizFinalScoreEl = document.getElementById('quiz-final-score');
+                
+                const allQuestions = [
+                    { image: 'https://placehold.co/600x400/facc15/333?text=Trator', answer: 'campo' },
+                    { image: 'https://placehold.co/600x400/38bdf8/fff?text=Prédios', answer: 'cidade' },
+                    { image: 'https://placehold.co/600x400/84cc16/333?text=Plantação', answer: 'campo' },
+                    { image: 'https://placehold.co/600x400/94a3b8/fff?text=Metrô', answer: 'cidade' },
+                    { image: 'https://placehold.co/600x400/fbbf24/333?text=Galinha', answer: 'campo' },
+                    { image: 'https://placehold.co/600x400/4f46e5/fff?text=Escritório', answer: 'cidade' },
+                    { image: 'https://placehold.co/600x400/16a34a/fff?text=Milho', answer: 'campo' },
+                    { image: 'https://placehold.co/600x400/be123c/fff?text=Fábrica', answer: 'cidade' }
+                ];
+                let quizQuestions = [];
+                let currentQuestionIndex = 0;
+                let score = 0;
 
-            function startQuizGame(level) {
-                const questionCount = level === 1 ? 4 : level === 2 ? 6 : 8;
-                quizQuestions = shuffle([...allQuestions]).slice(0, questionCount);
-                currentQuestionIndex = 0;
-                score = 0;
-                showQuestion();
-            }
-
-            function showQuestion() {
-                if (currentQuestionIndex >= quizQuestions.length) {
-                    showResults();
-                    return;
-                }
-                feedbackEl.textContent = '';
-                quizImageEl.src = quizQuestions[currentQuestionIndex].image;
-                campoBtn.disabled = false;
-                cidadeBtn.disabled = false;
-            }
-
-            function checkAnswer(userAnswer) {
-                campoBtn.disabled = true;
-                cidadeBtn.disabled = true;
-                const correctAnswer = quizQuestions[currentQuestionIndex].answer;
-                if (userAnswer === correctAnswer) {
-                    score++;
-                    feedbackEl.textContent = 'Correto!';
-                    feedbackEl.className = 'h-6 mb-2 font-semibold text-green-600';
-                } else {
-                    feedbackEl.textContent = 'Errado!';
-                    feedbackEl.className = 'h-6 mb-2 font-semibold text-red-600';
-                }
-                setTimeout(() => {
-                    currentQuestionIndex++;
+                function startQuizGame(level) {
+                    const questionCount = level === 1 ? 4 : level === 2 ? 6 : 8;
+                    quizQuestions = shuffle([...allQuestions]).slice(0, questionCount);
+                    currentQuestionIndex = 0;
+                    score = 0;
                     showQuestion();
-                }, 1500);
-            }
+                }
 
-            function showResults() {
-                quizQuestionContainer.classList.remove('active');
-                quizResultContainer.classList.add('active');
-                quizFinalScoreEl.textContent = `Sua pontuação final foi: ${score} de ${quizQuestions.length}!`;
+                function showQuestion() {
+                    if (currentQuestionIndex >= quizQuestions.length) {
+                        showResults();
+                        return;
+                    }
+                    feedbackEl.textContent = '';
+                    quizImageEl.src = quizQuestions[currentQuestionIndex].image;
+                    campoBtn.disabled = false;
+                    cidadeBtn.disabled = false;
+                }
+
+                function checkAnswer(userAnswer) {
+                    campoBtn.disabled = true;
+                    cidadeBtn.disabled = true;
+                    const correctAnswer = quizQuestions[currentQuestionIndex].answer;
+                    if (userAnswer === correctAnswer) {
+                        score++;
+                        feedbackEl.textContent = 'Correto!';
+                        feedbackEl.className = 'h-6 mb-2 font-semibold text-green-600';
+                    } else {
+                        feedbackEl.textContent = 'Errado!';
+                        feedbackEl.className = 'h-6 mb-2 font-semibold text-red-600';
+                    }
+                    setTimeout(() => {
+                        currentQuestionIndex++;
+                        showQuestion();
+                    }, 1500);
+                }
+
+                function showResults() {
+                    quizModal.querySelector('.game-area').classList.remove('active');
+                    quizResultContainer.classList.add('active');
+                    quizFinalScoreEl.textContent = `Sua pontuação final foi: ${score} de ${quizQuestions.length}!`;
+                }
+                
+                if(campoBtn) campoBtn.addEventListener('click', () => checkAnswer('campo'));
+                if(cidadeBtn) cidadeBtn.addEventListener('click', () => checkAnswer('cidade'));
+                setupGame('quiz-modal', 'start-quiz-btn', startQuizGame);
             }
-            
-            if(campoBtn) campoBtn.addEventListener('click', () => checkAnswer('campo'));
-            if(cidadeBtn) cidadeBtn.addEventListener('click', () => checkAnswer('cidade'));
-            setupGame('quiz-modal', 'start-quiz-btn', startQuizGame);
 
             // --- JOGO 2: JOGO DA MEMÓRIA ---
-            const memoryGrid = document.getElementById('memory-grid');
-            const memoryWinMessage = document.getElementById('memory-win-message');
-            const memoryResultScreen = document.getElementById('memory-modal').querySelector('.result-screen');
-            const allCardContent = ['🌽', '🏙️', '🐄', '🚗', '🚜', '🏢', '🌱', '🏭', '🍓', '🚦', '🐖', '🏪'];
-            let cards = [];
-            let flippedCards = [];
-            let matchedPairs = 0;
-            let lockBoard = false;
+            const memoryModal = document.getElementById('memory-modal');
+            if (memoryModal) {
+                const memoryGrid = document.getElementById('memory-grid');
+                const memoryWinMessage = document.getElementById('memory-win-message');
+                const memoryResultScreen = memoryModal.querySelector('.result-screen');
+                const allCardContent = ['🌽', '🏙️', '🐄', '🚗', '🚜', '🏢', '🌱', '🏭', '🍓', '🚦', '🐖', '🏪'];
+                let cards = [];
+                let flippedCards = [];
+                let matchedPairs = 0;
+                let lockBoard = false;
 
-            function startMemoryGame(level) {
-                const pairCount = level === 1 ? 4 : level === 2 ? 6 : 8;
-                const selectedIcons = shuffle([...allCardContent]).slice(0, pairCount);
-                cards = shuffle([...selectedIcons, ...selectedIcons]);
-                createMemoryBoard();
-            }
-
-            function createMemoryBoard() {
-                memoryGrid.innerHTML = '';
-                memoryWinMessage.classList.add('hidden');
-                memoryResultScreen.classList.remove('active');
-                memoryGrid.parentElement.classList.add('active');
-                
-                const columns = cards.length > 12 ? 4 : 4;
-                memoryGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-
-                matchedPairs = 0;
-                lockBoard = false;
-                cards.forEach(content => {
-                    const card = document.createElement('div');
-                    card.classList.add('memory-card');
-                    card.dataset.content = content;
-                    card.innerHTML = `<div class="card-face card-front"><i data-feather="star" class="w-8 h-8"></i></div><div class="card-face card-back">${content}</div>`;
-                    card.addEventListener('click', flipCard);
-                    memoryGrid.appendChild(card);
-                });
-                feather.replace();
-            }
-
-            function flipCard() {
-                if (lockBoard || this.classList.contains('matched') || this === flippedCards[0]) return;
-                this.classList.add('flipped');
-                flippedCards.push(this);
-                if (flippedCards.length === 2) checkForMatch();
-            }
-
-            function checkForMatch() {
-                lockBoard = true;
-                const [card1, card2] = flippedCards;
-                if (card1.dataset.content === card2.dataset.content) disableCards();
-                else unflipCards();
-            }
-            
-            function disableCards() {
-                flippedCards.forEach(card => card.classList.add('matched'));
-                matchedPairs++;
-                resetBoard();
-                if (matchedPairs === cards.length / 2) {
-                    setTimeout(() => { 
-                        memoryWinMessage.classList.remove('hidden');
-                        memoryGrid.parentElement.classList.remove('active');
-                        memoryResultScreen.classList.add('active');
-                    }, 800);
+                function startMemoryGame(level) {
+                    const pairCount = level === 1 ? 4 : level === 2 ? 6 : 8;
+                    const selectedIcons = shuffle([...allCardContent]).slice(0, pairCount);
+                    cards = shuffle([...selectedIcons, ...selectedIcons]);
+                    createMemoryBoard();
                 }
-            }
 
-            function unflipCards() {
-                setTimeout(() => {
-                    flippedCards.forEach(card => card.classList.remove('flipped'));
+                function createMemoryBoard() {
+                    memoryGrid.innerHTML = '';
+                    memoryWinMessage.classList.add('hidden');
+                    memoryResultScreen.classList.remove('active');
+                    memoryGrid.parentElement.classList.add('active');
+                    
+                    const columns = cards.length > 12 ? 4 : 4;
+                    memoryGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+
+                    matchedPairs = 0;
+                    lockBoard = false;
+                    cards.forEach(content => {
+                        const card = document.createElement('div');
+                        card.className = 'memory-card w-16 h-16 sm:w-20 sm:h-20 bg-green-400 rounded-md flex items-center justify-center cursor-pointer text-4xl';
+                        card.dataset.content = content;
+                        card.addEventListener('click', flipCard);
+                        memoryGrid.appendChild(card);
+                    });
+                }
+
+                function flipCard() {
+                    if (lockBoard || this.classList.contains('flipped') || this.classList.contains('matched') || flippedCards.length === 2) return;
+                    this.classList.add('flipped');
+                    this.innerHTML = this.dataset.content;
+                    flippedCards.push(this);
+                    if (flippedCards.length === 2) checkForMatch();
+                }
+
+                function checkForMatch() {
+                    lockBoard = true;
+                    const [card1, card2] = flippedCards;
+                    if (card1.dataset.content === card2.dataset.content) disableCards();
+                    else unflipCards();
+                }
+                
+                function disableCards() {
+                    flippedCards.forEach(card => card.classList.add('matched'));
+                    matchedPairs++;
                     resetBoard();
-                }, 1000);
-            }
-            
-            function resetBoard() {
-                [flippedCards, lockBoard] = [[], false];
-            }
-            setupGame('memory-modal', 'start-memory-btn', startMemoryGame);
-
-            // --- JOGO 3: ACERTE O ALIMENTO ---
-            const foodGuessProductEl = document.getElementById('food-guess-product');
-            const foodGuessOptionsEl = document.getElementById('food-guess-options');
-            const foodGuessFeedbackEl = document.getElementById('food-guess-feedback');
-            const foodGuessResultContainer = document.getElementById('food-guess-modal').querySelector('.result-screen');
-            const foodGuessQuestionContainer = document.getElementById('food-guess-question-container').parentElement;
-            const foodGuessFinalScoreEl = document.getElementById('food-guess-final-score');
-
-            const allFoodQuestions = [
-                { product: '🧃', answer: '🍊', options: ['🍓', '🐄', '🐔'] },
-                { product: '🍟', answer: '🥔', options: ['🌽', '🍅', '🌾'] },
-                { product: '🍞', answer: '🌾', options: ['🐄', '🐔', '🐖'] },
-                { product: '🍿', answer: '🌽', options: ['🥔', '🍅', '🍓'] },
-                { product: '🍳', answer: '🐔', options: ['🐄', '🐖', '🌾'] },
-                { product: '🧀', answer: '🐄', options: ['🐔', '🌽', '🍊'] }
-            ];
-            let foodQuestions = [];
-            let currentFoodQuestionIndex = 0;
-            let foodScore = 0;
-
-            function startFoodGuessGame(level) {
-                const questionCount = level === 1 ? 3 : level === 2 ? 4 : 6;
-                foodQuestions = shuffle([...allFoodQuestions]).slice(0, questionCount);
-                currentFoodQuestionIndex = 0;
-                foodScore = 0;
-                showFoodQuestion();
-            }
-
-            function showFoodQuestion() {
-                if (currentFoodQuestionIndex >= foodQuestions.length) {
-                    foodGuessQuestionContainer.classList.remove('active');
-                    foodGuessResultContainer.classList.add('active');
-                    foodGuessFinalScoreEl.textContent = `Sua pontuação final: ${foodScore} de ${foodQuestions.length}!`;
-                    return;
-                }
-                foodGuessFeedbackEl.textContent = '';
-                const question = foodQuestions[currentFoodQuestionIndex];
-                foodGuessProductEl.textContent = question.product;
-                foodGuessOptionsEl.innerHTML = '';
-                const options = shuffle([...question.options, question.answer]);
-                options.forEach(option => {
-                    const button = document.createElement('button');
-                    button.textContent = option;
-                    button.className = 'food-option-btn';
-                    button.onclick = () => checkFoodAnswer(option);
-                    foodGuessOptionsEl.appendChild(button);
-                });
-            }
-
-            function checkFoodAnswer(selectedOption) {
-                const question = foodQuestions[currentFoodQuestionIndex];
-                if (selectedOption === question.answer) {
-                    foodScore++;
-                    foodGuessFeedbackEl.textContent = 'Correto!';
-                    foodGuessFeedbackEl.className = 'h-6 mb-2 font-semibold text-green-600';
-                } else {
-                    foodGuessFeedbackEl.textContent = 'Errado!';
-                    foodGuessFeedbackEl.className = 'h-6 mb-2 font-semibold text-red-600';
-                }
-                
-                Array.from(foodGuessOptionsEl.children).forEach(btn => btn.disabled = true);
-
-                setTimeout(() => {
-                    currentFoodQuestionIndex++;
-                    showFoodQuestion();
-                }, 1500);
-            }
-            setupGame('food-guess-modal', 'start-food-guess-btn', startFoodGuessGame);
-
-            // --- JOGO 4: ORGANIZE A FAZENDA ---
-            const itemsToDragEl = document.getElementById('items-to-drag');
-            const dropZones = document.querySelectorAll('.drop-zone');
-            const dragDropWinMessage = document.getElementById('drag-drop-win-message');
-            const dragDropResultScreen = document.getElementById('drag-drop-modal').querySelector('.result-screen');
-            
-            const allDragItems = [
-                { id: 'item-1', content: '🚜', zone: 'campo' }, { id: 'item-2', content: '🏢', zone: 'cidade' },
-                { id: 'item-3', content: '🐄', zone: 'campo' }, { id: 'item-4', content: '�', zone: 'cidade' },
-                { id: 'item-5', content: '🌽', zone: 'campo' }, { id: 'item-6', content: '💻', zone: 'cidade' },
-                { id: 'item-7', content: '🐑', zone: 'campo' }, { id: 'item-8', content: '🏦', zone: 'cidade' }
-            ];
-            let dragItems = [];
-
-            function startDragDropGame(level) {
-                const itemCount = level === 1 ? 4 : level === 2 ? 6 : 8;
-                dragItems = shuffle([...allDragItems]).slice(0, itemCount);
-
-                dragDropWinMessage.classList.add('hidden');
-                dragDropResultScreen.classList.remove('active');
-                itemsToDragEl.innerHTML = '';
-                dropZones.forEach(zone => {
-                    while(zone.children.length > 1) zone.removeChild(zone.lastChild);
-                });
-
-                dragItems.forEach(item => {
-                    const el = document.createElement('span');
-                    el.id = item.id;
-                    el.textContent = item.content;
-                    el.className = 'draggable-item text-4xl';
-                    el.draggable = true;
-                    el.dataset.zone = item.zone;
-                    itemsToDragEl.appendChild(el);
-                });
-            }
-
-            document.addEventListener('dragstart', e => {
-                if (e.target.classList.contains('draggable-item')) {
-                    e.dataTransfer.setData('text/plain', e.target.id);
-                }
-            });
-
-            dropZones.forEach(zone => {
-                zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-                zone.addEventListener('dragleave', e => { zone.classList.remove('over'); });
-                zone.addEventListener('drop', e => {
-                    e.preventDefault();
-                    zone.classList.remove('over');
-                    const id = e.dataTransfer.getData('text/plain');
-                    const draggable = document.getElementById(id);
-                    if (draggable && draggable.dataset.zone === zone.dataset.zone) {
-                        draggable.remove();
-                        const clone = draggable.cloneNode(true);
-                        clone.classList.remove('draggable-item');
-                        clone.style.cursor = 'default';
-                        zone.appendChild(clone);
-                        if (itemsToDragEl.children.length === 0) {
-                            dragDropWinMessage.classList.remove('hidden');
-                            dragDropResultScreen.classList.add('active');
-                        }
+                    if (matchedPairs === cards.length / 2) {
+                        setTimeout(() => { 
+                            memoryWinMessage.classList.remove('hidden');
+                            memoryGrid.parentElement.classList.remove('active');
+                            memoryResultScreen.classList.add('active');
+                        }, 800);
                     }
-                });
-            });
-            setupGame('drag-drop-modal', 'start-drag-drop-btn', startDragDropGame);
-
-            // --- JOGO 5: ENCONTRE O INTRUSO ---
-            const intruderInstructionEl = document.getElementById('intruder-instruction');
-            const intruderGridEl = document.getElementById('intruder-grid');
-            const intruderFeedbackEl = document.getElementById('intruder-feedback');
-            const intruderResultContainer = document.getElementById('intruder-modal').querySelector('.result-screen');
-            const intruderFinalScoreEl = document.getElementById('intruder-final-score');
-            
-            const intruderSets = [
-                { instruction: "Encontre o item da cidade", items: ['🚜', '🐄', '🌽', '🏢', '🐑', '🌾'], intruder: '🏢' },
-                { instruction: "Encontre o item do campo", items: ['🚗', '🚦', '🏦', '💻', '🏪', '🌱'], intruder: '🌱' },
-                { instruction: "Encontre a fruta", items: ['🥕', '🥔', '🥦', '🍊', '🥬', '🍆'], intruder: '🍊' },
-                { instruction: "Encontre o animal", items: ['🍅', '🍓', '🐔', '🍇', '🍉', '🍒'], intruder: '🐔' }
-            ];
-            let currentIntruderRound = 0;
-            let intruderScore = 0;
-            let intruderLevel = 1;
-
-            function startIntruderGame(level) {
-                intruderLevel = level;
-                currentIntruderRound = 0;
-                intruderScore = 0;
-                nextIntruderRound();
-            }
-
-            function nextIntruderRound() {
-                if (currentIntruderRound >= intruderSets.length) {
-                    intruderGridEl.parentElement.classList.remove('active');
-                    intruderResultContainer.classList.add('active');
-                    intruderFinalScoreEl.textContent = `Sua pontuação final: ${intruderScore} de ${intruderSets.length}!`;
-                    return;
                 }
-                intruderFeedbackEl.textContent = '';
-                const set = intruderSets[currentIntruderRound];
-                intruderInstructionEl.textContent = set.instruction;
-                intruderGridEl.innerHTML = '';
+
+                function unflipCards() {
+                    setTimeout(() => {
+                        flippedCards.forEach(card => {
+                            card.classList.remove('flipped');
+                            card.innerHTML = '';
+                        });
+                        resetBoard();
+                    }, 1000);
+                }
                 
-                const gridSize = intruderLevel === 1 ? 6 : intruderLevel === 2 ? 9 : 12;
-                intruderGridEl.style.gridTemplateColumns = `repeat(${gridSize === 9 ? 3 : 4}, 1fr)`;
-
-                const items = shuffle(set.items).slice(0, gridSize - 1);
-                const finalItems = shuffle([...items, set.intruder]);
-
-                finalItems.forEach(item => {
-                    const el = document.createElement('div');
-                    el.textContent = item;
-                    el.className = 'intruder-item';
-                    el.onclick = () => checkIntruder(item, set.intruder);
-                    intruderGridEl.appendChild(el);
-                });
-            }
-
-            function checkIntruder(selected, correct) {
-                if (selected === correct) {
-                    intruderScore++;
-                    intruderFeedbackEl.textContent = 'Correto!';
-                    intruderFeedbackEl.className = 'h-6 mt-4 font-semibold text-green-600';
-                } else {
-                    intruderFeedbackEl.textContent = 'Errado!';
-                    intruderFeedbackEl.className = 'h-6 mt-4 font-semibold text-red-600';
+                function resetBoard() {
+                    [flippedCards, lockBoard] = [[], false];
                 }
-                Array.from(intruderGridEl.children).forEach(btn => btn.onclick = null);
-                setTimeout(() => {
-                    currentIntruderRound++;
-                    nextIntruderRound();
-                }, 1500);
+                setupGame('memory-modal', 'start-memory-btn', startMemoryGame);
             }
-            setupGame('intruder-modal', 'start-intruder-btn', startIntruderGame);
 
             // --- LÓGICA DA BIBLIOTECA DE SEMENTES ---
             const seedDetailModal = document.getElementById('seed-detail-modal');
@@ -1223,22 +1259,12 @@
                 { name: "Girassol", sciName: "Helianthus annuus", germination: "7 a 10 dias", planting: "Primavera", img: "https://placehold.co/300x300/404040/fbbf24?text=Girassol" },
                 { name: "Abóbora", sciName: "Cucurbita", germination: "6 a 10 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/fca5a5/4c0519?text=Abóbora" },
                 { name: "Tomate", sciName: "Solanum lycopersicum", germination: "5 a 10 dias", planting: "Primavera", img: "https://placehold.co/300x300/ef4444/ffffff?text=Tomate" },
-                { name: "Alface", sciName: "Lactuca sativa", germination: "7 a 10 dias", planting: "Ano todo", img: "https://placehold.co/300x300/84cc16/14532d?text=Alface" },
-                { name: "Cenoura", sciName: "Daucus carota", germination: "14 a 21 dias", planting: "Ano todo", img: "https://placehold.co/300x300/f97316/ffffff?text=Cenoura" },
-                { name: "Rabanete", sciName: "Raphanus sativus", germination: "3 a 7 dias", planting: "Ano todo", img: "https://placehold.co/300x300/ec4899/ffffff?text=Rabanete" },
-                { name: "Pimentão", sciName: "Capsicum annuum", germination: "8 a 14 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/dc2626/ffffff?text=Pimentão" },
-                { name: "Cebola", sciName: "Allium cepa", germination: "7 a 12 dias", planting: "Outono / Inverno", img: "https://placehold.co/300x300/f3e8ff/581c87?text=Cebola" },
-                { name: "Salsa", sciName: "Petroselinum crispum", germination: "14 a 30 dias", planting: "Ano todo", img: "https://placehold.co/300x300/16a34a/ffffff?text=Salsa" },
-                { name: "Coentro", sciName: "Coriandrum sativum", germination: "7 a 20 dias", planting: "Ano todo", img: "https://placehold.co/300x300/15803d/ffffff?text=Coentro" },
-                { name: "Manjericão", sciName: "Ocimum basilicum", germination: "5 a 10 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/4d7c0f/ffffff?text=Manjericão" },
-                { name: "Ervilha", sciName: "Pisum sativum", germination: "7 a 14 dias", planting: "Outono / Inverno", img: "https://placehold.co/300x300/a3e635/166534?text=Ervilha" },
-                { name: "Melancia", sciName: "Citrullus lanatus", germination: "4 a 12 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/f87171/14532d?text=Melancia" },
-                { name: "Pepino", sciName: "Cucumis sativus", germination: "3 a 10 dias", planting: "Primavera / Verão", img: "https://placehold.co/300x300/22c55e/ffffff?text=Pepino" }
+                { name: "Alface", sciName: "Lactuca sativa", germination: "7 a 10 dias", planting: "Ano todo", img: "https://placehold.co/300x300/84cc16/14532d?text=Alface" }
             ];
             
             function populateSeedGallery() {
                 if (!seedGallery) return;
-                seedGallery.innerHTML = ''; // Limpa a galeria para evitar duplicatas
+                seedGallery.innerHTML = '';
                 seeds.forEach(seed => {
                     const card = document.createElement('div');
                     card.className = "seed-card bg-white p-4 rounded-lg shadow-sm cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all";
@@ -1254,7 +1280,7 @@
                     seedGallery.appendChild(card);
                 });
             }
-            populateSeedGallery(); // Popula a galeria quando o script é carregado
+            populateSeedGallery();
 
             if (seedGallery) {
                 seedGallery.addEventListener('click', (e) => {
@@ -1276,56 +1302,10 @@
                 });
             }
             
-            // --- LÓGICA DA API GEMINI ---
-            const apiKey = ""; // Deixe em branco
-
-            async function callGemini(prompt, resultContainer, button) {
-                resultContainer.innerHTML = '<div class="loader"></div>';
-                resultContainer.classList.remove('hidden');
-                button.disabled = true;
-                
-                try {
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                    const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-
-                    const result = await response.json();
-                    
-                    if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0]) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        resultContainer.innerText = text;
-                    } else {
-                        throw new Error("Resposta da API inválida.");
-                    }
-                } catch (error) {
-                    console.error("Erro ao chamar a API Gemini:", error);
-                    resultContainer.innerText = "Desculpe, não foi possível gerar as ideias no momento. Tente novamente mais tarde.";
-                } finally {
-                    button.disabled = false;
-                }
-            }
-            
-            const genTipsBtn = document.getElementById('generate-planting-tips-btn');
-            if (genTipsBtn) {
-                genTipsBtn.addEventListener('click', (e) => {
-                    const seedName = e.target.dataset.seedName;
-                    const resultContainer = document.getElementById('planting-tips-result');
-                    const prompt = `Aja como um agricultor experiente. Forneça dicas simples e práticas para plantar sementes de ${seedName} numa horta escolar com crianças. Inclua informações sobre: 1. Preparo do solo. 2. Profundidade do plantio. 3. Quantidade de água. 4. Tempo até a colheita. Formate a resposta de forma clara e fácil de ler.`;
-                    callGemini(prompt, resultContainer, e.target);
-                });
-            }
-
             // Carregamento inicial
             switchContent('inicio');
+            feather.replace(); // Garante que todos os ícones sejam renderizados na carga inicial
         });
     </script>
 </body>
 </html>
-�
